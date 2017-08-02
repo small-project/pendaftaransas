@@ -14,6 +14,11 @@ INNER JOIN tb_apply_pekerjaan ON tb_apply_pekerjaan.kd_pekerjaan=tb_jenis_pekerj
 <br/>
 <hr>
 <strong>Pekerjaan yang dipilih:</strong>
+<br/>
+<p>
+	<a href="?p=pilihPekerjaan" >pilih pekerjaan</a>
+</p>
+<br/>
 	<table class="table table-bordered table-responsive">
 		<thead>
 			<th>Nama Pekerjaan</th>

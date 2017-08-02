@@ -67,215 +67,719 @@ window.location.href='/SAS/pendaftaran/';
 	}
 
 ?>
-<div class="panel panel-primary">
-<div class="panel-heading">
-	Informasi Personal
+
+      <style type="text/css" rel="stylesheet">
+            .panel-primary > .panel-heading {
+                  color: #fff;
+                  background-color: #337ab7;
+            border-color: #337ab7;
+            }
+            .panel-title > a:hover{
+                  text-decoration: none;
+            }
+
+            .panel-title > a:focus{
+                  text-decoration: none;
+            }
+      </style>
+
+<div class="" style="padding-left: 15px; padding-right: 15px;">
+   <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+      <div class="panel panel-primary">
+         <div class="panel-heading" role="tab" id="headingOne">
+            <h4 class="panel-title">
+               <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+               Informasi Personal
+               </a>
+            </h4>
+         </div>
+         <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+            <div class="panel-body">
+               <div class="panel-body">
+                  <form class="form-horizontal" method="post" action="#" data-toggle="validator">
+                     <div class="form-group">
+                        <div class="col-sm-6">
+                           <input type="text" class="form-control" name="txt_namaDepan" placeholder="nama depan" required>
+                        </div>
+                        <div class="col-sm-6">
+                           <input type="text" class="form-control" name="txt_namaBelakang" placeholder="nama belakang" required>
+                        </div>
+                     </div>
+                     <div class="form-group">
+                        <div class="col-sm-12">
+                           <textarea class="form-control" name="txt_alamat" placeholder="nama jalan, rt/rw" rows="3" required></textarea>
+                        </div>
+                     </div>
+                     <div class="form-group">
+                        <div class="col-sm-4">
+                           <input type="text" class="form-control" name="txt_kelurahan" placeholder="kelurahan" required>
+                        </div>
+                        <div class="col-sm-4">        
+                           <input type="text" class="form-control" name="txt_kecamatan" placeholder="kecamatan" required>
+                        </div>
+                        <div class="col-sm-4">        
+                           <input type="text" class="form-control" name="txt_kota" placeholder="kota" required>
+                        </div>
+                     </div>
+                     <div class="form-group">
+                        <div class="col-sm-4">
+                           <input type="text" class="form-control" name="txt_mobile" placeholder="No. Handphone" required>
+                        </div>
+                        <div class="col-sm-4">        
+                           <input type="text" class="form-control" name="txt_rumah" placeholder="No. Telp Rumah" required>
+                        </div>
+                        <div class="col-sm-4">        
+                           <input type="text" class="form-control" name="txt_statusRumah" placeholder="Status Tempat Tinggal" required>
+                        </div>
+                     </div>
+                     <div class="form-group">
+                        <div class="col-sm-4">
+                           <input type="text" class="form-control" name="txt_tempatLahir" placeholder="Tempat Lahir" required>
+                        </div>
+                        <div class="col-sm-4">        
+                           <input type="text" class="form-control" name="txt_tanggal" placeholder="Tanggal Lahir" required>
+                        </div>
+                        <div class="col-sm-4">        
+                           <input type="text" class="form-control" name="txt_namaSuku" placeholder="Nama Suku" required>
+                        </div>
+                     </div>
+                     <div class="form-group">
+                        <div class="col-sm-4">
+                           <input type="text" class="form-control" name="txt_agama" placeholder="Agama" required>
+                        </div>
+                        <div class="col-sm-4">        
+                           <input type="text" class="form-control" name="txt_tinggiBadan" placeholder="Tinggi Badan (cm)" required>
+                        </div>
+                        <div class="col-sm-4">        
+                           <input type="text" class="form-control" name="txt_beratBadan" placeholder="Berat Badan (kg)" required>
+                        </div>
+                     </div>
+                     <div class="form-group">
+                        <div class="col-sm-4">
+                           <select class="form-control" name="txt_status">
+                              <option value="0">Status</option>
+                              <option value="lajang">Lajang</option>
+                              <option value="menikah">Menikah</option>
+                              <option value="duda">Duda</option>
+                              <option value="janda">Janda</option>
+                           </select>
+                        </div>
+                        <div class="col-sm-4">
+                           <select class="form-control" name="txt_jenisKelamin">
+                              <option value="0">Jenis Kelamin</option>
+                              <option value="L">Laki - Laki</option>
+                              <option value="P">Perempuan</option>
+                           </select>
+                        </div>
+                        <div class="col-sm-4">        
+                           <input type="text" class="form-control" name="txt_beratBadan" placeholder="Berat Badan (kg)" required>
+                        </div>
+                     </div>
+                     <div class="form-group">
+                        <div class="col-sm-4">
+                           <select class="form-control" name="txt_typeSIM">
+                              <option value="0">Type SIM</option>
+                              <option value="A">A</option>
+                              <option value="B">B</option>
+                              <option value="C">C</option>
+                              <option value="B1">B1</option>
+                              <option value="B1">B1</option>
+                              <option value="D">D</option>
+                           </select>
+                        </div>
+                        <div class="col-sm-4">        
+                           <input type="number" class="form-control" name="txt_nomorSim" placeholder="Nomor SIM" required>
+                        </div>
+                     </div>
+                     <div class="form-group">
+                        <div class="col-sm-4">
+                           <input type="number" class="form-control" name="txt_nomorBPJS" placeholder="nomor BPJS" required>
+                        </div>
+                        <div class="col-sm-4">
+                           <input type="number" class="form-control" name="txt_nomorNPWP" placeholder="nomor NPWP" required>
+                        </div>
+                        <div class="col-sm-4">
+                           <button type="submit" class="btn btn-block btn-primary">Simpan</button>
+                        </div>
+                     </div>
+                  </form>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div class="panel panel-primary">
+         <div class="panel-heading" role="tab" id="headingTwo">
+            <h4 class="panel-title">
+               <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+               Informasi Penyakit
+               </a>
+            </h4>
+         </div>
+         <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+            <div class="panel-body">
+               <div class="panel-body">
+                  <form class="form-horizontal" method="post" action="#" data-toggle="validator">
+                     <div class="form-group">
+                        <div class="col-sm-4">
+                           <input type="text" class="form-control" name="txt_namaPenyakit" placeholder="nama penyakit" required>
+                        </div>
+                        <div class="col-sm-4">        
+                           <input type="text" class="form-control" name="txt_keteranganPenyakit" placeholder="keterangan" required>
+                        </div>
+                        <div class="col-sm-4">        
+                           <button class="btn btn-block btn-primary" role="button" >Tambah</button>
+                        </div>
+                     </div>
+                  </form>
+                  <table class="table table-bordered">
+                     <thead class="success">
+                        <th class="danger">Nama Penyakit</th>
+                        <th class="danger">Status</th>
+                        <th class="danger">#</th>
+                     </thead>
+                     <tbody>
+                        <tr>
+                           <td></td>
+                           <td></td>
+                           <td></td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div class="panel panel-primary">
+         <div class="panel-heading" role="tab" id="headingThree">
+            <h4 class="panel-title">
+               <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+               Informasi Keluarga
+               </a>
+            </h4>
+         </div>
+         <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+            <div class="panel-body">
+                  <form class="form-horizontal" method="post" action="#" data-toggle="validator">
+                     <div class="form-group">
+                        <div class="col-sm-4">
+                           <input type="text" class="form-control" name="txt_namaLengkap" placeholder="nama lengkap" required>
+                        </div>
+                        <div class="col-sm-4">        
+                           <input type="text" class="form-control" name="txt_statusKeluarga" placeholder="status keluarga" required>
+                        </div>
+                        <div class="col-sm-4">        
+                           <input type="number" class="form-control" name="txt_nomorHP" placeholder="nomor handphone" required>
+                        </div>
+                     </div>
+                     <div class="form-group">
+                        <div class="col-sm-4">
+                           <input type="text" class="form-control" name="txt_tempatLahirKeluarga" placeholder="tempat lahir" required>
+                        </div>
+                        <div class="col-sm-4">        
+                           <input type="text" id="tanggalLahir" class="form-control" name="txt_tanggaLahir" placeholder="tanggal lahir" required>
+                        </div>
+                        <div class="col-sm-4">        
+                           <input type="text" id="pendidikanterakhir" class="form-control" name="txt_pendidikanTerakhir" placeholder="pendidikan terakhir" required>
+                        </div>
+                     </div>
+                  </form>
+                  <br/>
+                  <table class="table table-bordered">
+                     <thead class="success">
+                        <th class="danger">Nama Lengkap</th>
+                        <th class="danger">Status Keluarga</th>
+                        <th class="danger">Jenis Kelamin</th>
+                        <th class="danger">Pendidikan</th>
+                        <th class="danger">Pekerjaan</th>
+                        <th class="danger">Handphone</th>
+                        <th class="danger">#</th>
+                     </thead>
+                     <tbody>
+                        <tr>
+                           <td></td>
+                           <td></td>
+                           <td></td>
+                           <td></td>
+                           <td></td>
+                           <td></td>
+                           <td></td>
+                        </tr>
+                     </tbody>
+                  </table>
+            </div>
+         </div>
+      </div>
+      <div class="panel panel-primary">
+         <div class="panel-heading" role="tab" id="headingFour">
+            <h4 class="panel-title">
+               <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+               Informasi Pendidikan
+               </a>
+            </h4>
+         </div>
+         <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
+            <div class="panel-body">
+                  <form class="form-horizontal" method="post" action="#" data-toggle="validator">
+                     <div class="form-group">
+                        <div class="col-sm-4">
+                           <select class="form-control" name="txt_tingkatPendidikan">
+                              <option value="0">Tingkat Pendidikan</option>
+                              <option value="SD">SD</option>
+                              <option value="SMP">SMP</option>
+                              <option value="SMA/SMK">SMA Sederatajat</option>
+                              <option value="Perguruan Tinggi">Perguruan Tinggi</option>
+                           </select>
+                        </div>
+                        <div class="col-sm-4">        
+                           <input type="text" class="form-control" name="txt_namaBadanPendidikan" placeholder="nama badan pendidikan" required>
+                        </div>
+                        <div class="col-sm-4">        
+                           <input type="text" class="form-control" name="txt_jurusanPendidikan" placeholder="jurusan" required>
+                        </div>
+                     </div>
+                     <div class="form-group">
+                        <div class="col-sm-4">
+                           <input type="number" class="form-control" name="txt_tahunMasuk" placeholder="tahun masuk" required>
+                        </div>
+                        <div class="col-sm-4">        
+                           <input type="number" class="form-control" name="txt_tahunLulus" placeholder="tahun lulus" required>
+                        </div>
+                        <div class="col-sm-4">        
+                           <input type="number" class="form-control" name="txt_nilaiRata" placeholder="nilai rata-rata" required>
+                        </div>
+                     </div>
+                  </form>
+                  <br/>
+                  <table class="table table-bordered">
+                     <thead class="success">
+                        <th class="danger">Tingkat Pendidikan</th>
+                        <th class="danger">Nama Badan</th>
+                        <th class="danger">Jurusan</th>
+                        <th class="danger">Tahun Masuk</th>
+                        <th class="danger">Tahun Keluar</th>
+                        <th class="danger">Nilai Rata"</th>
+                        <th class="danger">#</th>
+                     </thead>
+                     <tbody>
+                        <tr>
+                           <td></td>
+                           <td></td>
+                           <td></td>
+                           <td></td>
+                           <td></td>
+                           <td></td>
+                           <td></td>
+                        </tr>
+                     </tbody>
+                  </table>
+            </div>
+         </div>
+      </div>
+      <div class="panel panel-primary">
+         <div class="panel-heading" role="tab" id="headingFive">
+            <h4 class="panel-title">
+               <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+               Informasi Pendidikan non Formal (Kursus)
+               </a>
+            </h4>
+         </div>
+         <div id="collapseFive" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFive">
+            <div class="panel-body">
+                  <form class="form-horizontal" method="post" action="#" data-toggle="validator">
+                     <div class="form-group">
+                        <div class="col-sm-4">
+                           <input type="text" class="form-control" name="txt_namaBidangKursus" placeholder="nama bidang kursus" required>
+                        </div>
+                        <div class="col-sm-4">        
+                           <input type="text" class="form-control" name="txt_bidangPenyelenggara" placeholder="bidang penyelenggara" required>
+                        </div>
+                        <div class="col-sm-4">        
+                           <input type="number" class="form-control" name="txt_tahunMasukKursus" placeholder="tahun masuk" required>
+                        </div>
+                     </div>
+                     <div class="form-group">
+                        <div class="col-sm-4">
+                           <input type="number" class="form-control" name="txt_tahunLulusKursus" placeholder="tahun lulus" required>
+                        </div>
+                        <div class="col-sm-4">        
+                           <button class="btn btn-block btn-primary" role="button" type="submit" >Tambah</button>
+                        </div>
+                        <div class="col-sm-4">
+                        </div>
+                     </div>
+                  </form>
+                  <br/>
+                  <table class="table table-bordered">
+                     <thead class="success">
+                        <th class="danger">Nama Bidang</th>
+                        <th class="danger">Badan Penyelenggara</th>
+                        <th class="danger">Tahun Masuk</th>
+                        <th class="danger">Tahun Keluar</th>
+                        <th class="danger">#</th>
+                     </thead>
+                     <tbody>
+                        <tr>
+                           <td></td>
+                           <td></td>
+                           <td></td>
+                           <td></td>
+                           <td></td>
+                        </tr>
+                     </tbody>
+                  </table>
+            </div>
+         </div>
+      </div>
+      <div class="panel panel-primary">
+         <div class="panel-heading" role="tab" id="headingSix">
+            <h4 class="panel-title">
+               <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+               Informasi Bahasa Asing <small style="color: #ebebeb;">yang dikuasai.</small>
+               </a>
+            </h4>
+         </div>
+         <div id="collapseSix" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingSix">
+            <div class="panel-body">
+                  <form class="form-horizontal" method="post" action="#" data-toggle="validator">
+                     <div class="form-group">
+                        <div class="col-sm-4">
+                           <input type="text" class="form-control" name="txt_namaBahasa" placeholder="nama Bahasa" required>
+                        </div>
+                        <div class="col-sm-4">        
+                           <input type="number" class="form-control" name="txt_nilaiWriting" placeholder="Writing" required>
+                        </div>
+                        <div class="col-sm-4">        
+                           <input type="number" class="form-control" name="txt_nilaiListening" placeholder="Listening" required>
+                        </div>
+                     </div>
+                     <div class="form-group">
+                        <div class="col-sm-4">
+                           <input type="number" class="form-control" name="txt_nilaiSpeaking" placeholder="Speaking" required>
+                        </div>
+                        <div class="col-sm-4">        
+                           <button class="btn btn-block btn-primary" role="button" type="submit" >Tambah</button>
+                        </div>
+                        <div class="col-sm-4">
+                        </div>
+                     </div>
+                  </form>
+                  <br/>
+                  <table class="table table-bordered">
+                     <thead class="success">
+                        <th class="danger">Nama Bahasa</th>
+                        <th class="danger">Writing</th>
+                        <th class="danger">Listening</th>
+                        <th class="danger">Speaking</th>
+                        <th class="danger">#</th>
+                     </thead>
+                     <tbody>
+                        <tr>
+                           <td></td>
+                           <td></td>
+                           <td></td>
+                           <td></td>
+                           <td></td>
+                        </tr>
+                     </tbody>
+                  </table>
+            </div>
+         </div>
+      </div>
+      <div class="panel panel-primary">
+         <div class="panel-heading" role="tab" id="headingSeven">
+            <h4 class="panel-title">
+               <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+               Informasi Penghargaan
+               </a>
+            </h4>
+         </div>
+         <div id="collapseSeven" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingSeven">
+            <div class="panel-body">
+                  <form class="form-horizontal" method="post" action="#" data-toggle="validator">
+                     <div class="form-group">
+                        <div class="col-sm-4">
+                           <input type="text" class="form-control" name="txt_namaPenghargaan" placeholder="nama penghargaan" required>
+                        </div>
+                        <div class="col-sm-8">        
+                           <textarea class="form-control" name="txt_keteranganPenghargaan" placeholder="penghargaan" rows="3" required></textarea>
+                        </div>
+                     </div>
+                     <div class="form-group">
+                        <div class="col-sm-4">
+                        </div>
+                        <div class="col-sm-4">
+                        </div>
+                        <div class="col-sm-4">        
+                           <button class="btn btn-block btn-primary" role="button" type="submit" >Tambah</button>
+                        </div>
+                        <div class="col-sm-4">
+                        </div>
+                     </div>
+                  </form>
+                  <br/>
+                  <table class="table table-bordered">
+                     <thead class="success">
+                        <th class="danger">Nama Penghargaan</th>
+                        <th class="danger">Keterangan</th>
+                        <th class="danger">#</th>
+                     </thead>
+                     <tbody>
+                        <tr>
+                           <td></td>
+                           <td></td>
+                           <td></td>
+                        </tr>
+                     </tbody>
+                  </table>
+            </div>
+         </div>
+      </div>
+      <div class="panel panel-primary">
+         <div class="panel-heading" role="tab" id="headingEight">
+            <h4 class="panel-title">
+               <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
+               Informasi Keahlian
+               </a>
+            </h4>
+         </div>
+         <div id="collapseEight" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingEight">
+            <div class="panel-body">
+                  <form class="form-horizontal" method="post" action="#" data-toggle="validator">
+                     <div class="form-group">
+                        <div class="col-sm-4">
+                           <input type="text" class="form-control" name="txt_namaKeahlian" placeholder="nama keahlian" required>
+                        </div>
+                        <div class="col-sm-4">        
+                           <input type="text" class="form-control" name="txt_nilaiKeahlian" placeholder="nilai" required>
+                        </div>
+                        <div class="col-sm-4">        
+                           <button class="btn btn-block btn-primary" role="button" type="submit" >Tambah</button>
+                        </div>
+                     </div>
+                  </form>
+                  <br/>
+                  <table class="table table-bordered">
+                     <thead class="success">
+                        <th class="danger">Nama Keahlian</th>
+                        <th class="danger">Nilai</th>
+                        <th class="danger">#</th>
+                     </thead>
+                     <tbody>
+                        <tr>
+                           <td></td>
+                           <td></td>
+                           <td></td>
+                        </tr>
+                     </tbody>
+                  </table>
+            </div>
+         </div>
+      </div>
+      <div class="panel panel-primary">
+         <div class="panel-heading" role="tab" id="headingNine">
+            <h4 class="panel-title">
+               <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseNine" aria-expanded="false" aria-controls="collapseNine">
+               Informasi Riwayat Pekerjaan
+               </a>
+            </h4>
+         </div>
+         <div id="collapseNine" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingNine">
+            <div class="panel-body">
+                  <form class="form-horizontal" method="post" action="#" data-toggle="validator">
+                     <div class="form-group">
+                        <div class="col-sm-4">
+                           <input type="text" class="form-control" name="txt_namaPerusahaan" placeholder="nama perusahaan" required>
+                        </div>
+                        <div class="col-sm-4">        
+                           <input type="number" class="form-control" name="txt_tahunMasukPekerjaan" placeholder="tahun masuk" required>
+                        </div>
+                        <div class="col-sm-4">        
+                           <input type="number" class="form-control" name="txt_tahunKeluarPekerjaan" placeholder="tahun masuk" required>
+                        </div>
+                     </div>
+                     <div class="form-group">
+                        <div class="col-sm-4">
+                           <input type="text" class="form-control" name="txt_jabatanTerakhir" placeholder="jabatan terakhir" required>
+                        </div>
+                        <div class="col-sm-4">        
+                           <input type="text" class="form-control" name="txt_gajian" placeholder="informasi gaji" required>
+                        </div>
+                        <div class="col-sm-4">        
+                           <input type="text" class="form-control" name="txt_alasanBerhenti" placeholder="alasan berhenti" required>
+                        </div>
+                     </div>
+                     <div class="form-group">
+                        <div class="col-sm-8">
+                           <textarea class="form-control" name="txt_deskripsiPekerjaan" placeholder="Deskripsi Pekerjaan" rows="3" required></textarea>
+                        </div>
+                        <div class="col-sm-4">        
+                           <button class="btn btn-block btn-primary" role="button" type="submit" >Tambah</button>
+                        </div>
+                     </div>
+                  </form>
+                  <br/>
+                  <table class="table table-bordered">
+                     <thead class="success">
+                        <th class="danger">Nama Perusahaan</th>
+                        <th class="danger">Tahun Masuk</th>
+                        <th class="danger">Tahun Keluar</th>
+                        <th class="danger">Jabatan</th>
+                        <th class="danger">Gaji</th>
+                        <th class="danger">Alasan Berhenti</th>
+                        <th class="danger">Keterangan</th>
+                        <th class="danger">#</th>
+                     </thead>
+                     <tbody>
+                        <tr>
+                           <td></td>
+                           <td></td>
+                           <td></td>
+                           <td></td>
+                           <td></td>
+                           <td></td>
+                           <td></td>
+                           <td></td>
+                        </tr>
+                     </tbody>
+                  </table>
+            </div>
+         </div>
+      </div>
+      <div class="panel panel-primary">
+         <div class="panel-heading" role="tab" id="headingTen">
+            <h4 class="panel-title">
+               <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTen" aria-expanded="false" aria-controls="collapseTen">
+               Informasi Referensi
+               </a>
+            </h4>
+         </div>
+         <div id="collapseTen" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTen">
+            <div class="panel-body">
+                  <form class="form-horizontal" method="post" action="#" data-toggle="validator">
+                     <div class="form-group">
+                        <div class="col-sm-4">
+                           <input type="text" class="form-control" name="txt_namaLengkapReferensi" placeholder="nama lengkap" required>
+                        </div>
+                        <div class="col-sm-4">        
+                           <input type="number" class="form-control" name="txt_jabatanReferensi" placeholder="jabatan" required>
+                        </div>
+                        <div class="col-sm-4">        
+                           <input type="number" class="form-control" name="txt_nomorMobile" placeholder="nomor handphone" required>
+                        </div>
+                     </div>
+                     <div class="form-group">
+                        <div class="col-sm-4">
+                           <input type="text" class="form-control" name="txt_hubungan" placeholder="hubungan" required>
+                        </div>
+                        <div class="col-sm-4">        
+                           <button class="btn btn-block btn-primary" role="button" type="submit" >Tambah</button>
+                        </div>
+                     </div>
+                  </form>
+                  <br/>
+                  <table class="table table-bordered">
+                     <thead class="success">
+                        <th class="danger">Nama Lengkap</th>
+                        <th class="danger">Jabatan</th>
+                        <th class="danger">Nomor Handphone</th>
+                        <th class="danger">Hubungan</th>
+                        <th class="danger">#</th>
+                     </thead>
+                     <tbody>
+                        <tr>
+                           <td></td>
+                           <td></td>
+                           <td></td>
+                           <td></td>
+                           <td></td>
+                        </tr>
+                     </tbody>
+                  </table>
+            </div>
+         </div>
+      </div>
+      <div class="panel panel-primary">
+         <div class="panel-heading" role="tab" id="headingEleven">
+            <h4 class="panel-title">
+               <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseEleven" aria-expanded="false" aria-controls="collapseEleven">
+               Upload File
+               </a>
+            </h4>
+         </div>
+         <div id="collapseEleven" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingEleven">
+            <div class="panel-body">
+                  <form class="form-horizontal" method="post" action="#" data-toggle="validator">
+                     <div class="form-group">
+                        <div class="col-sm-4">
+                           <input type="text" class="form-control" name="txt_namaFile" placeholder="nama file" required>
+                        </div>
+                        <div class="col-sm-4">        
+                           <button class="btn btn-block btn-primary" role="button" type="submit" >Upload</button>
+                        </div>
+                        <div class="col-sm-4">        
+                           
+                        </div>
+                     </div>
+                  </form>
+                  <br/>
+                  <table class="table table-bordered">
+                     <thead class="success">
+                        <th class="danger">Nama File</th>
+                        <th class="danger">Type File</th>
+                        <th class="danger">Path</th>
+                        <th class="danger">#</th>
+                     </thead>
+                     <tbody>
+                        <tr>
+                           <td></td>
+                           <td></td>
+                           <td></td>
+                           <td></td>
+                        </tr>
+                     </tbody>
+                  </table>
+            </div>
+         </div>
+      </div>
+
+      <div class="panel panel-primary">
+         <div class="panel-heading" role="tab" id="headingTwelve">
+            <h4 class="panel-title">
+               <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwelve" aria-expanded="false" aria-controls="collapseTwelve">
+               Persetujuan
+               </a>
+            </h4>
+         </div>
+         <div id="collapseTwelve" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwelve">
+            <div class="panel-body">
+                  <form class="form-horizontal" method="post" action="#" data-toggle="validator">
+                     <div class="form-group">
+                        <div class="col-sm-12">
+                           <textarea class="form-control" name="txt_kepribadian" placeholder="Jelaskan Tentang Kepribadian Anda" rows="3" required></textarea>
+                        </div>
+                     </div>
+                     <div class="form-group">
+                        <div class="col-sm-12">        
+                           <textarea class="form-control" name="txt_alasan" placeholder="Jelaskan Alasan Perusahaan Harus Menghire Anda" rows="3" required></textarea>
+                        </div>
+                     </div>
+                     <div class="form-group">
+                        <div class="col-sm-12">
+                           <input type="checkbox" name="txt_persetujuan">*Please Check This
+                        </div>
+                        <div class="col-sm-12">
+                           <p>Dengan ini saya menyatakan bahwa data yang diinput pada form pendaftaran ini benar. Saya bertanggung jawab atas informasi yang telah saya input. Data ini bisa dipergunakan untuk kepentingan perusahaan.</p>
+                        </div>
+                     </div>
+                  </form>
+                  <br/>
+                  <div class="row col-sm-3 col-sm-offset-9">
+                     <button class="btn btn-block btn-primary" role="button" type="submit">Simpan</button>
+                  </div>
+            </div>
+         </div>
+      </div>
+
+      
+   </div>
 </div>
-<div class="panel-body">
-	<form class="form-horizontal" method="post" action="">
-	<div class="col-sm-4">
-		Nomor KTP
-	</div>
-	<div class="col-sm-4">
-		Nama Lengkap
-	</div>
-	<div class="col-sm-4"> 
-		Alamat Email
-	</div>
-	  <div class="form-group">
-	    <div class="col-sm-4">
-	      <input type="text" class="form-control" id="inputEmail3" name="txt_ktp" value="<?php print($userRow['no_ktp']); ?>" readonly>
-	    </div>
-	    <div class="col-sm-4">
-	      <input type="text" class="form-control" id="inputEmail3" value="<?php print($userRow['nama_depan']); ?> <?php print($userRow['nama_belakang']); ?>" name="txt_nama" >
-	    </div>
-	    <div class="col-sm-4">
-	      <input type="text" class="form-control" id="inputEmail3" value="<?php print($userRow['email']); ?>" readonly>
-	    </div>
-	  </div>
-
-		<div class="col-sm-4">
-			Nomor Handphone
-		</div>
-		<div class="col-sm-4">
-			Nomor Telp
-		</div>
-		<div class="col-sm-4">
-			Tempat Tanggal Lahir
-		</div>
-
-	  <div class="form-group">
-	    <div class="col-sm-4">
-	      <input type="text" class="form-control" id="inputEmail3" value="<?php print($userRow['nomor_hp']); ?>" name="txt_hp">
-	    </div>
-	    <div class="col-sm-4">
-	      <input type="text" class="form-control" id="inputEmail3" value="<?php print($userRow['nomor_telp']); ?>" name="txt_telp">
-	    </div>
-	    <div class="col-sm-4">
-	      <input type="text" class="form-control" id="inputEmail3" value="<?php print($userRow['tempat_lahir']); ?>, <?php print($userRow['tgl_lahir']); ?>" readonly>
-	    </div>
-	  </div>
-
-	  <div class="col-sm-4">
-		Nama Suku
-	</div>
-	<div class="col-sm-4">
-		Agama
-	</div>
-	<div class="col-sm-4">
-		Status Pernikahan
-	</div>
-
-	  <div class="form-group">
-	    <div class="col-sm-4">
-	      <input type="text" class="form-control" id="inputEmail3" value="<?php print($userRow['nama_suku']); ?>" name="txt_suku">
-	    </div>
-	    <div class="col-sm-4">
-	      <input type="text" class="form-control" id="inputEmail3" value="<?php print($userRow['agama']); ?>" name="txt_agama">
-	    </div>
-	    <div class="col-sm-4">
-	      <input type="text" class="form-control" id="inputEmail3" value="<?php print($userRow['status_perkawinan']); ?>" name="txt_status">
-	    </div>
-	  </div>
-
-	  	<div class="col-sm-2">
-			Tinggi
-		</div>
-		<div class="col-sm-2">
-			Berat
-		</div>
-		<div class="col-sm-4">
-			Nomor SIM
-		</div>
-		<div class="col-sm-2">
-			SIM
-		</div>
-		<div class="col-sm-2">
-			Jenis Kelamin
-		</div>
-
-	  <div class="form-group">
-	    <div class="col-sm-2">
-	      <input type="text" class="form-control" id="inputEmail3" value="<?php print($userRow['tinggi_badan']); ?>" name="txt_tinggi">
-	    </div>
-	    <div class="col-sm-2">
-	      <input type="text" class="form-control" id="inputEmail3" value="<?php print($userRow['berat_badan']); ?>" name="txt_berat">
-	    </div>
-	    <div class="col-sm-4">
-	      <input type="text" class="form-control" id="inputEmail3" value="<?php print($userRow['nomor_sim']); ?>" name="txt_sim">
-	    </div>
-	    <div class="col-sm-2">
-	      <input type="text" class="form-control" id="inputEmail3" value="<?php print($userRow['jenis_sim']); ?>" name="txt_jenis">
-	    </div>
-	    <div class="col-sm-2">
-	    	<input type="text" class="form-control" id="inputEmail3" value="<?php print($userRow['jenis_kelamin']); ?>" readonly>
-	    </div>
-	  </div>
-	  <hr>
-	  <div class="col-sm-4">
-			Status Tempat Tinggal
-		</div>
-		<div class="col-sm-4">
-			Alamat Rumah <small><strong></strong></small>
-		</div>
-		<div class="col-sm-4">
-			Kelurahan <small><strong></strong></small>
-		</div>
-
-	  <div class="form-group">
-	    <div class="col-sm-4">
-	      <input type="text" class="form-control" id="inputEmail3" value="<?php print($userRow['status_tempat_tinggal']); ?>" name="txt_tmpt">
-	    </div>
-	    <div class="col-sm-4">
-	      <input type="text" class="form-control" id="inputEmail3" value="<?php print($userRow['alamat']); ?>" name="txt_alamat">
-	    </div>
-	    <div class="col-sm-4">
-	      <input type="text" class="form-control" id="inputEmail3" value="<?php print($userRow['kelurahan']); ?>" name="txt_kelurahan">
-	    </div>
-	    
-	  </div>
-
-	  <div class="col-sm-4">
-			Kecamatan
-		</div>
-		<div class="col-sm-4">
-			Kota <small><strong></strong></small>
-		</div>
-		<div class="col-sm-4">
-			.
-		</div>
-		<div class="form-group">
-
-	    <div class="col-sm-4">
-	      <input type="text" class="form-control" id="inputEmail3" value="<?php print($userRow['kecamatan']); ?>" name="txt_kecamatan">
-	    </div>
-	    <div class="col-sm-4">
-	      <input type="text" class="form-control" id="inputEmail3" value="<?php print($userRow['kota']); ?>" name="txt_kota">
-	    </div>
-	    <div class="col-sm-4">
-	      
-	    </div>
-	    
-	  </div>
-	  <hr>
-	  <div class="col-md-12">
-	  	<div class="col-sm-4">Nomor BPJS</div>
-	  	<div class="col-sm-4">Nomor NPWP</div>
-	  	<div class="col-sm-4"></div>
-	  </div>
-	  
-	  <div class="col-md-12">
-	  	<div class="form-group">
-
-	    <div class="col-sm-4">
-	      <input type="text" class="form-control" id="inputEmail3" value="<?php print($userRow['no_BPJS']); ?>" name="txt_bpjs">
-	    </div>
-	    <div class="col-sm-4">
-	      <input type="text" class="form-control" id="inputEmail3" value="<?php print($userRow['no_NPWP']); ?>" name="txt_npwp">
-	    </div>
-	    <div class="col-sm-4">
-	    	<button class="btn btn-block btn-primary" type="submit" name="addUpdate">
-	  		Update
-	  	</button>
-	    </div>
-	  </div>
-<!-- 
-	  <hr>
-
-	  <div class="col-sm-4">
-		Nama Bank
-	</div>
-	<div class="col-sm-4">
-		Cabang
-	</div>
-	<div class="col-sm-4">
-		Nomor ATM
-	</div>
-
-	<?php 
-		$stmt = "SELECT tb_kode_bank.nama_bank, tb_info_bank.no_ktp, tb_info_bank.cabang, tb_info_bank.nomor_rek FROM tb_info_bank
-LEFT JOIN tb_kode_bank ON tb_kode_bank.kd_bank=tb_info_bank.kd_bank WHERE tb_info_bank.no_ktp = :id";
-		$stmt = $auth_user->runQuery($stmt);
-		$stmt->execute(array(
-			':id'	=> $user_id));
-		$show = $stmt->fetch(PDO::FETCH_LAZY);
-	?>
-	  <div class="form-group">
-	    <div class="col-sm-4">
-	      <input type="text" class="form-control" id="inputEmail3" value="<?php echo($show['nama_bank']); ?>" name="txt_bank">
-	    </div>
-	    <div class="col-sm-4">
-	      <input type="text" class="form-control" id="inputEmail3" value="<?php echo($show['cabang']); ?>" name="txt_cabang">
-	    </div>
-	    <div class="col-sm-4">
-	      <input type="text" class="form-control" id="inputEmail3" value="<?php echo($show['nomor_rek']); ?>" name="txt_rek">
-	    </div>
-	  </div> -->
-	  
-	  
-	</form>
-
-	<br>
-</div>
-</div>
-<br>
