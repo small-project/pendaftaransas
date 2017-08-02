@@ -1,6 +1,11 @@
+<div class="jumbotron">
+	<h1>Hai, <?=$userRow['nama_depan'] ?> <?=$userRow['nama_belakang'] ?></h1>
+	<br/>
+	<p>ini adalah halaman user admin untuk calon atau karyawan yang telah melakukan pendaftarn pada perusahaan kami. kami harapkan kesedian user untuk mengupdate informasi terbaru tentang data diri anda. CV yang baik, besar kemungkinan untuk kami proses secara cepat. untuk mengupdate profile anda, silahkan klik <a href="?p=update">profile</a> ini.</p>
+	<br/>
+	<p class="management-ttd"><small>Management.</small></p>
+</div>
 
-<h3>Info Penting</h3>
-<hr>
     <?php
 
       $sql = 'SELECT * FROM tb_info_interview WHERE no_ktp = :kode AND status = ""';
@@ -50,7 +55,7 @@
     }
       
       
-        include_once 'pilih-pekerjaan.php';
+        
      
       if ($userRow['no_BPJS'] == "") {
         # code...

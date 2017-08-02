@@ -54,3 +54,16 @@ body{
 h1{
 	font-family: 'Open Sans', sans-serif;
 }
+
+.panel-default > .panel-heading {
+	color: #fff;
+	background-color: #337ab7;
+    border-color: #337ab7;
+}
+.panel-title > a:hover{
+	text-decoration: none;
+}
+
+.panel-title > a:focus{
+	text-decoration: none;
+}

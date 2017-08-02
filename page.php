@@ -13,6 +13,9 @@
                     case"list":
                         include"listJob.php";
                         break;
+                    case"pilihPekerjaan":
+                        include"pilih-pekerjaan.php";
+                        break;
                     default:
                         include('default.php');
                         break;

@@ -26,64 +26,61 @@
 </head>
 
 <body>
-
-
-<nav class="navbar navbar-default navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="">SINERGIADHIKARYA</a>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-          <!-- <ul class="nav navbar-nav">
-            <li class="active"><a href="">Back to Article</a></li>
-            <li><a href="">jQuery</a></li>
-            <li><a href="">PHP</a></li>
-          </ul> -->
-          <ul class="nav navbar-nav navbar-right">
-            
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-        <span class="glyphicon glyphicon-user"></span>&nbsp;Hi' <?php echo $userRow['email']; ?>&nbsp;<span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                <li><a href="profile.php"><span class="glyphicon glyphicon-user"></span>&nbsp;View Profile</a></li>
-                <li><a href="logout.php?logout=true"><span class="glyphicon glyphicon-log-out"></span>&nbsp;Sign Out</a></li>
-              </ul>
-            </li>
-          </ul>
-        </div><!--/.nav-collapse -->
+  <div class="container">
+  <nav class="navbar navbar-default">
+   <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+         <span class="sr-only">Toggle navigation</span>
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+         </button>
+         <a class="navbar-brand" href="#">SINERGIADHIKARYA</a>
       </div>
-    </nav>
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+         <ul class="nav navbar-nav">
+            <li ><a href="/pendaftaran">home</a></li>
+            <li><a href="?p=profile">profile</a></li>
+            <li class="dropdown">
+               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">corporate  <span class="caret"></span></a>
+               <ul class="dropdown-menu">
+                  <li><a href="?p=update">informasi</a></li>
+                  <?php if ($userRow['status'] == 1) {?>
+                  <li><a href="?p=list">list job</a></li>
+                  <li><a href="#">form leave</a></li>
+                  <li><a href="#">form complain</a></li>
+                  <?php }  ?>
+               </ul>
+            </li>
+         </ul>
+         <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown">
+               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">&nbsp;Hi' <?php echo $userRow['email']; ?>&nbsp; <span class="caret"></span></a>
+               <ul class="dropdown-menu">
+                  <li><a href="?p=update">Setting</a></li>
+                  <li><a href="logout.php?logout=true">Logout</a></li>
+               </ul>
+            </li>
+         </ul>
+      </div>
+      <!-- /.navbar-collapse -->
+   </div>
+   <!-- /.container-fluid -->
+</nav> 
 
-	<div class="clearfix"></div>
-	
-    <div class="container-fluid" style="margin-top:80px;">
-	
-    <div class="container">
-    
-    	<label class="h5">welcome : <?php print($userRow['nama_depan']); ?> <?php print($userRow['nama_belakang']); ?></label>
-        <hr />
-      <div class="row">
-        <div class="col-md-2">
-          <div class="list-group">
-            <a href="/SAS/pendaftaran/" class="list-group-item active"> List Menu</a>
-            <a href="?p=profile" class="list-group-item"> Profile</a>
-            <a href="?p=update" class="list-group-item"> Update Profile</a>
-            <a href="?p=list" class="list-group-item"> LIST JOB</a>
-          </div>
-        </div>
-        <div class="col-md-10">
-          <?php
+
+
+
+	<div class="container">
+      <div class="content">
+        <?php
             require 'page.php';
           ?>
-        </div>
       </div>
-    </div>
+      </div>
     
     </div>
 
