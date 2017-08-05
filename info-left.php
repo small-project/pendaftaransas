@@ -4,12 +4,60 @@ INNER JOIN tb_apply_pekerjaan ON tb_apply_pekerjaan.kd_pekerjaan=tb_jenis_pekerj
 	$cek = $auth_user->runQuery($sql);
 	$cek->execute(array(
 		':id'	=> $user_id));
+
+	if(isset($_POST['updateimages'])){
+
+		require_once("session.php");
+		include"db.php";
+
+		$no_ktp=$_SESSION['user_session'];
+		$updateimages = $_POST['foto'];
+
+		$sql="UPDATE tb_karyawan set foto=:foto where no_ktp=:no_ktp";
+		$stmt=$db->prepare($sql);
+		$stmt->bindParam(':no_ktp',$no_ktp);
+		$stmt->bindParam(':foto',$updateimages);
+		$stmt->execute();
+
+		if($stmt==false){
+			echo"Data bahasa gagal disimpan";
+		}
+		else{
+			header("Refresh:0; url=profile.php?p=profile");
+		}
+
+	}
 	
 ?>
 <div class="row">
-	<div class="col-md-12">
-		<center><img class="img-responsive img-rounded" width="250px" src="<?php echo $userRow['foto']; ?>" alt="Avatar" title="Change the avatar"></center>
-	</div>
+
+	       <div class="col-md-12" align="center">
+          <div class="form-group">
+          
+          <div>
+          <img  src="<?php echo $userRow['foto']; ?>" id='defaultimg' width="250" height="240" class="img-circle">
+          <img id='img' width="200" height="190" class="img-circle" style=display:none;><br><br>
+          </div>
+
+          <div id=uploadfile align="center">
+            <label class="btn btn-primary">
+                Choose File <input type="file" id="imgInp" accept="image/*" capture="camera" class="form-control" style="display: none;">
+            </label>
+          </div>
+
+		  <div class="col-sm-12">
+		<form method="post" action="">
+		<input type="hidden" name="foto" id="updatefoto">
+        <button type="button" class="btn btn-danger" onclick="clearImage()" style=display:none; id="clear"><strong>Clear Image</strong></button>
+		<button type="submit" class="btn btn-success" name="updateimages" style=display:none; id="updateimages"><strong>Update Image</strong></button>
+
+		 </form>
+
+		  </div>
+
+		  </div>
+          </div> 
+
 </div>
 <br/>
 <hr>
