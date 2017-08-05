@@ -12,7 +12,7 @@ if (isset($_POST['cekKebutuhan'])) {
 		# code...
 		$error = "Pilih salah satu jenis Kebutuhan";
 	}elseif($_POST['check'] == ""){
-        $error = "Please Checkbox";
+        $error = "Please Checkbox Persetujuan";
         }else{
         
         $jenis = $_POST['txt_kode'];
