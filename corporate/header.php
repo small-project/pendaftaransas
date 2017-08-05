@@ -5,7 +5,8 @@
 <title>SAS</title>
 <link href="../assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
 <link href="../assets/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet" media="screen">
+<link href="../assets/vendor/select.css" rel="stylesheet" media="screen">
 <link rel="stylesheet" href="../assets/style.css" type="text/css"  />
-<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+
 </head>
 <body>

@@ -1,3 +1,18 @@
+<?php 
+    if(isset($_POST['ajukanMPO'])){
+        $jenisPekerjaan = array();
+        $jenisData = $_POST['pekerjaan'];
+        if(empty($jenisData)){
+            $error = "data kosong";
+        }else{
+            foreach ($jenisData as $jenis){
+                array_push($jenisPekerjaan, $jenis);
+            }
+            // $kategori = serialize($jenisPekerjaan);
+            print_r($jenisPekerjaan);
+        }
+    }
+?>
 <div class="signin-form">
 
 	<div class="container form-signin">
@@ -19,24 +34,22 @@
 		?>
         </div>
         <div class="form-group">
-			<?php
-			    $cek = new USER();
-				$stmt = $cek->runQuery("SELECT * FROM tb_jenis_pekerjaan");
-				$stmt->execute();
-			?>
 			<div class="form-group">
-			        <select class="form-control" name="txt_kode">
-			    		<option value="0" selected>-- Kebutuhan --</option>
-			    		<?php 
-			    		while ($row = $stmt->fetch(PDO::FETCH_LAZY)) {
-			    			# code...
-			    		?>
-			    		<option value="<?php echo $row['kd_pekerjaan']; ?>"><?php echo $row['nama_pekerjaan']; ?></option>
-
-			    		<?php } ?>
-			    	</select>
-			        <span id="check-e"></span>
-			</div>
+                    <select id="pekerjaan" name="pekerjaan[]" class="form-control" multiple="multiple" required>
+                        <option value=""></option>
+                        <?php
+                        // ambil data dari database
+						$cek = new USER();
+						$stmt = $cek->runQuery("SELECT * FROM tb_jenis_pekerjaan");
+						$stmt->execute();
+                        while ($row = $stmt->fetch(PDO::FETCH_LAZY)) {
+                            ?>
+                            <option value="<?php echo $row['kd_pekerjaan'] ?>"><?php echo $row['nama_pekerjaan'] ?></option>
+                            <?php
+                        }
+                        ?>
+                    </select>
+                </div>
 
         	<div class="form-group">
 			        <input type="hidden" class="form-control" name="txt_kd" value="<?php echo $nomor; ?>" />
@@ -76,3 +89,4 @@
     </div>
     
 </div>
+
