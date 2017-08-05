@@ -1,13 +1,13 @@
 <?php
-  
+
 	require_once("session.php");
-	
+
 	require_once("class.user.php");
 	$auth_user = new USER();
-	
-	
+
+
 	$user_id = $_SESSION['user_session'];
-	
+
 	$cek = $auth_user->runQuery("SELECT (no_ktp) FROM tb_karyawan WHERE no_ktp = :id");
   $cek->execute(array(
     ':id'  => $user_id));
@@ -17,10 +17,10 @@
   } else {
     $stmt = $auth_user->runQuery("SELECT * FROM tb_login_karyawan WHERE no_ktp=:user_id");
   $stmt->execute(array(":user_id"=>$user_id));
-  
-  
+
+
   $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
-  
+
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -41,7 +41,7 @@
   <link href="assets/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet" media="screen">
 
 <title>Welcome - <?php print($userRow['email']); ?></title>
-  
+
   <style type="text/css" media="screen">
 
   body {
@@ -52,7 +52,7 @@
     margin-top: 12px;
   }
   .stepwizard-row {
-    display: table-row; 
+    display: table-row;
   }
   .stepwizard {
     display: table;
@@ -97,7 +97,7 @@
   /* prograss bar */
   #progressbox {
     border: 1px solid #CAF2FF;
-    padding: 1px; 
+    padding: 1px;
     position:relative;
     width:400px;
     border-radius: 3px;
@@ -149,7 +149,7 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
-            
+
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
         <span class="glyphicon glyphicon-user"></span>&nbsp;Hi' <?php echo $userRow['email']; ?>&nbsp;<span class="caret"></span></a>
@@ -165,12 +165,12 @@
 
 
     <div class="clearfix"></div>
-      
-    
-<div class="container-fluid" style="margin-top:80px;">
-  
 
-    
+
+<div class="container-fluid" style="margin-top:80px;">
+
+
+
 <div class="col-md-8 col-md-offset-2 well">
   <h1 align="center">
   <strong>Registrasi Form <i class="fa fa-user-circle-o" aria-hidden="true"></i>
@@ -213,7 +213,7 @@
     include "stepreferensi.php";
     include "stepuploadfile.php";
 
-    ?>         
+    ?>
 
 </div>
 
@@ -309,8 +309,8 @@
           })
 
          $(document).ready(function(){
-            $("#onesteps").click(function(){ 
-              
+            $("#onesteps").click(function(){
+
                 var nama_depan = $('#nama_depan').val();
                 var nama_belakang = $('#nama_belakang').val();
                 var foto=$('#img').val();
@@ -324,7 +324,7 @@
                 var tempat_lahir = $('#tempat_lahir').val();
                 var tgl_lahir = $('#tanggal_lahir').val();
                 var nama_suku =$('#nama_suku').val();
-                var agama =$('#agama').val();              
+                var agama =$('#agama').val();
                 var tinggi_badan=$('#tinggi_badan').val();
                 var berat_badan=$('#berat_badan').val();
                 var nomor_sim=$('#nomor_sim').val();
@@ -367,13 +367,13 @@
                         localStorage.clear();
                       }
                       })
-      
+
             });
         });
 
       $(document).ready(function(){
           $("#datapenyakit").click(function(){
-              
+
             var nama_penyakit = $('#nama_penyakit').val();
             var status = $('#status_penyakit').val();
 
@@ -420,7 +420,7 @@
                 },
                 success:function(data){
                   // alert('' + data + '');
-                      $("#tablepenyakit").bootstrapTable('refresh'); 
+                      $("#tablepenyakit").bootstrapTable('refresh');
                       $('#nama_penyakit').val('');
                       $('#status_penyakit').val('');
                 }
@@ -433,8 +433,8 @@
         });
 
         $(document).ready(function(){
-          $("#datakeluarga").click(function(){ 
-              
+          $("#datakeluarga").click(function(){
+
               var nama_lengkap = $('#nama_lengkap').val();
               var statuskeluarga = $('#statuskeluarga').val();
               var jenis_kelamin = $('#jenis_kelamin:checked').val();
@@ -451,7 +451,7 @@
               else{
                 var huburgent =1;
               }
-              
+
 
               if(nama_lengkap ==''){
                 $.notify({
@@ -548,7 +548,7 @@
                         },
                       success:function(data){
                       // alert('' + data + '');
-                      $("#tablekeluarga").bootstrapTable('refresh'); 
+                      $("#tablekeluarga").bootstrapTable('refresh');
                        $('#nama_lengkap').val('');
                        $('#statuskeluarga').val('');
                        $('#jenis_kelamin:checked').val('');
@@ -556,11 +556,11 @@
                        $('#tanggal_lahirkeluarga').val('');
                        $('#pendidikan').val('');
                        $('#pekerjaan').val('');
-                      $('#nomor_handphone').val('');  
+                      $('#nomor_handphone').val('');
                   }
                 })
-              
-              }                    
+
+              }
             });
         });
 
@@ -666,14 +666,14 @@
                   },
                   success:function(data){
                       // alert('' + data + '');
-                      $("#tablependidikan").bootstrapTable('refresh'); 
+                      $("#tablependidikan").bootstrapTable('refresh');
                       $('#tingkat').val('');
                       $('#jurusan').val('');
                       $('#tahun_masuk').val('');
                       $('#tahun_keluar').val('');
                   }
                 })
-            }          
+            }
 
           });
       });
@@ -761,7 +761,7 @@
                 },
                 success:function(data){
                     // alert('' + data + '');
-                      $("#tablekhursus").bootstrapTable('refresh'); 
+                      $("#tablekhursus").bootstrapTable('refresh');
                       $('#nama_bidang').val('');
                       $('#nama_penyelenggara').val('');
                       $('#tahun_masukkhursus').val('');
@@ -823,7 +823,7 @@
                   },
                   success:function(data){
                       // alert('' + data + '');
-                      $("#tablepenghargaan").bootstrapTable('refresh'); 
+                      $("#tablepenghargaan").bootstrapTable('refresh');
                       $('#nama_penghargaan').val('');
                       $('#keterangan').val('');
                   }
@@ -915,11 +915,11 @@
                   },
                   success:function(data){
                     // alert('' + data + '');
-                      $("#tablebahasa").bootstrapTable('refresh'); 
+                      $("#tablebahasa").bootstrapTable('refresh');
                       $('#nama_bahasa').val('');
                       $('#writing').val('');
-                      $('#listening').val(''); 
-                      $('#speaking').val(''); 
+                      $('#listening').val('');
+                      $('#speaking').val('');
                   }
               })
           }
@@ -975,9 +975,9 @@
                   },
                   success:function(data){
                     // alert('' + data + '');
-                      $("#tablekeahlian").bootstrapTable('refresh'); 
+                      $("#tablekeahlian").bootstrapTable('refresh');
                       $('#nama_keahlian').val('');
-                      $('#nilai_keahlian').val(''); 
+                      $('#nilai_keahlian').val('');
                   }
               })
           }
@@ -1098,7 +1098,7 @@
                 from: "bottom",
                 align: "right"
               }
-              })  
+              })
                 $('#keterangan_pekerjaan').focus();
           }
           else{
@@ -1118,14 +1118,14 @@
                   },
                   success:function(data){
                     // alert('' + data + '');
-                      $("#tablepekerjaan").bootstrapTable('refresh'); 
+                      $("#tablepekerjaan").bootstrapTable('refresh');
                       $('#nama_perusahaan').val('');
                       $('#tahun_masukkerja').val('');
-                      $('#tahun_keluarkerja').val(''); 
-                      $('#jabatan').val(''); 
-                      $('#gaji').val(''); 
-                      $('#alasan_berhenti').val(''); 
-                      $('#keterangan_pekerjaan').val(''); 
+                      $('#tahun_keluarkerja').val('');
+                      $('#jabatan').val('');
+                      $('#gaji').val('');
+                      $('#alasan_berhenti').val('');
+                      $('#keterangan_pekerjaan').val('');
                   }
               })
           }
@@ -1153,7 +1153,7 @@
                 from: "bottom",
                 align: "right"
               }
-              })  
+              })
                 $('#nama_lengkap_referensi').focus();
           }
           else if(jabatan ==''){
@@ -1168,7 +1168,7 @@
                 from: "bottom",
                 align: "right"
               }
-              })  
+              })
                 $('#jabatan_referensi').focus();
           }
           else if(nomor_hp == ''){
@@ -1215,7 +1215,7 @@
                   },
                   success:function(data){
                     // alert('' + data + '');
-                      $("#tablereferensi").bootstrapTable('refresh'); 
+                      $("#tablereferensi").bootstrapTable('refresh');
                       $('#nama_lengkap_referensi').val('');
                       $('#jabatan_referensi').val('');
                       $('#nomor_hpreferensi').val('');
@@ -1237,7 +1237,7 @@
                 $('#img').show().attr('src', e.target.result);
                 $('#uploadfile').fadeOut('fast');
                 localStorage.foto = e.target.result
-              }   
+              }
 
               reader.readAsDataURL(input.files[0]);
           }
@@ -1246,9 +1246,9 @@
       function clearImage(){
         $("#uploadfile").show();
         $("#clear").hide();
-        $("#defaultimg").show();    
-        $("#img").hide(); 
-        localStorage.clear();       
+        $("#defaultimg").show();
+        $("#img").hide();
+        localStorage.clear();
       }
 
 
@@ -1263,21 +1263,21 @@
 
       // Upload File
 
-      $(document).ready(function() { 
-        var options = { 
-            target:   '#output',   // target element(s) to be updated with server response 
-            beforeSubmit:  beforeSubmit,  // pre-submit callback 
-            success:       afterSuccess,  // post-submit callback 
-            uploadProgress: OnProgress, //upload progress callback 
-            resetForm: true        // reset the form after successful submit 
-          }; 
-          
-         $('#MyUploadForm').submit(function() { 
-            $(this).ajaxSubmit(options);        
-            // always return false to prevent standard browser submit and page navigation 
-            return false; 
-          }); 
-          
+      $(document).ready(function() {
+        var options = {
+            target:   '#output',   // target element(s) to be updated with server response
+            beforeSubmit:  beforeSubmit,  // pre-submit callback
+            success:       afterSuccess,  // post-submit callback
+            uploadProgress: OnProgress, //upload progress callback
+            resetForm: true        // reset the form after successful submit
+          };
+
+         $('#MyUploadForm').submit(function() {
+            $(this).ajaxSubmit(options);
+            // always return false to prevent standard browser submit and page navigation
+            return false;
+          });
+
 
       //function after succesful file upload (when server response)
       function afterSuccess()
@@ -1293,23 +1293,23 @@
           //check whether browser fully supports all File API
          if (window.File && window.FileReader && window.FileList && window.Blob)
         {
-          
+
           if( !$('#FileInput').val()) //check empty input filed
           {
             $("#output").html("Are you kidding me?");
             return false
           }
-          
+
           var fsize = $('#FileInput')[0].files[0].size; //get file size
           var ftype = $('#FileInput')[0].files[0].type; // get file type
-          
 
-          //allow file types 
+
+          //allow file types
           switch(ftype)
               {
-            case 'image/png': 
-            // case 'image/gif': 
-            case 'image/jpeg': 
+            case 'image/png':
+            // case 'image/gif':
+            case 'image/jpeg':
             // case 'image/pjpeg':
             // case 'text/plain':
             // case 'text/html':
@@ -1324,17 +1324,17 @@
                       $("#output").html("<b>"+ftype+"</b> Unsupported file type!");
               return false
               }
-          
+
           //Allowed file size is less than 5 MB (1048576)
-          if(fsize>2242880) 
+          if(fsize>2242880)
           {
             $("#output").html("<b>"+bytesToSize(fsize) +"</b> Too big file! <br />File is too big, it should be less than 5 MB.");
             return false
           }
-              
+
           $('#submit-btn').hide(); //hide submit button
           $('#loading-img').show(); //hide submit button
-          $("#output").html("");  
+          $("#output").html("");
         }
         else
         {
@@ -1372,7 +1372,7 @@
       $(document).ready(function(){
         $('#finish').click(function(){
 
-            var keperibadian = $('#keperibadian').val();           
+            var keperibadian = $('#keperibadian').val();
             var menghire = $('#menghire').val();
             var persetujuan =$('#persetujuan:checked').val();
 
@@ -1863,5 +1863,5 @@ $(document).ready(function() {
 </body>
 </html>
 <?php
-    
+
   } ?>
