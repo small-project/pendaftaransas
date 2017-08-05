@@ -77,13 +77,11 @@
 
 
 
-	<div class="container">
-      <div class="content">
+	
         <?php
             require 'page.php';
           ?>
-      </div>
-      </div>
+      
 
     </div>
 
