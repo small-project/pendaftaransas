@@ -75,15 +75,12 @@
 </nav>
 
 
-
-
-	
+	<div class="container">
+     
         <?php
             require 'page.php';
           ?>
       
-
-    </div>
 
 </div>
 
@@ -91,8 +88,6 @@
 
 
   <script type="text/javascript" src="vendor/jquery/jquery.min.js"></script>
-  <!-- Latest compiled and minified JavaScript -->
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <!-- Bootstrap Datepciker -->
   <script src="bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
   <!-- Jquery Form -->
@@ -105,6 +100,42 @@
 
 
   <script type="text/javascript">
+
+        function readURL(input) {
+
+          if (input.files && input.files[0]) {
+              var reader = new FileReader();
+
+              reader.onload = function (e) {
+                $('#img').show().attr('src', e.target.result);
+                $('#updatefoto').attr('value', e.target.result);
+                $('#uploadfile').fadeOut('fast');
+                localStorage.foto = e.target.result
+              }
+
+              reader.readAsDataURL(input.files[0]);
+          }
+      }
+
+      function clearImage(){
+        $("#uploadfile").show();
+        $("#clear").hide();      
+        $("#updateimages").hide();
+        $("#defaultimg").show();
+        $("#img").hide();
+        localStorage.clear();
+      }
+
+
+      $(document).ready(function(){
+        $("#imgInp").on('change', function(){
+          readURL(this);
+        $("#defaultimg").hide();
+        $("#img").show();        
+        $("#updateimages").show();
+        $("#clear").show();
+        });
+      });
 
       $(document).ready(function(){
           $("#datapenyakit").click(function(){
