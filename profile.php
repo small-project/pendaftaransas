@@ -75,19 +75,15 @@
 </nav>
 
 
-	<div class="container">
-     
         <?php
             require 'page.php';
           ?>
       
 
-</div>
-
-
 
 
   <script type="text/javascript" src="vendor/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="vendor/bootstrap/js/bootstrap.min.js"></script>
   <!-- Bootstrap Datepciker -->
   <script src="bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
   <!-- Jquery Form -->
