@@ -3,7 +3,7 @@
 	<div class="container form-signin">
      
         
-       <form class="" method="post" id="login-form">
+       <form class="" method="post" action = "request.php" id="login-form">
       
         <h2 class="form-signin-heading">Pendaftaran Perusahaan</h2><hr />
         <div id="error">

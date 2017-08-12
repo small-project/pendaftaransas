@@ -1,24 +1,9 @@
-<?php 
-    if(isset($_POST['ajukanMPO'])){
-        $jenisPekerjaan = array();
-        $jenisData = $_POST['pekerjaan'];
-        if(empty($jenisData)){
-            $error = "data kosong";
-        }else{
-            foreach ($jenisData as $jenis){
-                array_push($jenisPekerjaan, $jenis);
-            }
-            // $kategori = serialize($jenisPekerjaan);
-            print_r($jenisPekerjaan);
-        }
-    }
-?>
 <div class="signin-form">
 
 	<div class="container form-signin">
      
         
-       <form class="" method="post" id="login-form">
+       <form class="" method="post" action = "request.php" id="login-form">
       
         <h2 class="form-signin-heading">Pendaftaran Perusahaan</h2><hr />
         <div id="error">

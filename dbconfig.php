@@ -2,9 +2,9 @@
 class Database
 {   
     private $host = "localhost";
-    private $db_name = "sinergiadhidatabase";
+    private $db_name = "database";
     private $username = "root";
-    private $password = "anggaadityas";
+    private $password = "root";
     public $conn;
      
     public function dbConnection()
