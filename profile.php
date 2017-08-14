@@ -10,8 +10,11 @@
 
 	$stmt = $auth_user->runQuery("SELECT * FROM tb_karyawan  WHERE no_ktp=:user_id");
 	$stmt->execute(array(":user_id"=>$user_id));
-
-	$userRow=$stmt->fetch(PDO::FETCH_LAZY);
+    $userRow=$stmt->fetch(PDO::FETCH_LAZY);
+    
+    $manage = $auth_user->runQuery("SELECT tb_push.kd_push, tb_push.dari, tb_push.kepada, tb_detail_push.kd_detail, tb_detail_push.read_date FROM tb_push INNER JOIN tb_detail_push ON tb_detail_push.kd_push = tb_push.kd_push WHERE tb_push.kepada = :user_id AND tb_detail_push.read_date IS NULL");
+    $manage->execute(array(":user_id"=>$user_id));
+    $count = $manage->rowCount();
 
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -60,6 +63,9 @@
             </li>
          </ul>
          <ul class="nav navbar-nav navbar-right">
+             <li><a href="?p=pesan"><button class="btn btn-sm">
+                    Pesan <span class="badge badge-secondary"><?=$count?></span>
+                    </button></a></li>
             <li class="dropdown">
                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">&nbsp;Hi' <?php echo $userRow['email']; ?>&nbsp; <span class="caret"></span></a>
                <ul class="dropdown-menu">

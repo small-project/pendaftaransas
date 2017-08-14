@@ -13,11 +13,17 @@
                     case"list":
                         include"listJob.php";
                         break;
+                    case"pesan":
+                        include"pesan.php";
+                        break;
+                    case"detailPesan":
+                        include"detailPesan.php";
+                        break;
                     case"pilihPekerjaan":
                         include"pilih-pekerjaan.php";
                         break;
                     default:
-                        include('default.php');
+                        include'default.php';
                         break;
                         
                 }
