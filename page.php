@@ -22,6 +22,9 @@
                     case"pilihPekerjaan":
                         include"pilih-pekerjaan.php";
                         break;
+                    case"notification":
+                        include"notification.php";
+                        break;
                     default:
                         include'default.php';
                         break;
