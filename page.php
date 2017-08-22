@@ -25,6 +25,9 @@
                     case"notification":
                         include"notification.php";
                         break;
+                    case"reply":
+                        include"reply.php";
+                    break;
                     default:
                         include'default.php';
                         break;
