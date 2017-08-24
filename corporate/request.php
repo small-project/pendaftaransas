@@ -27,12 +27,8 @@ if(isset($_POST['ajukanBPO'])){
     $status      = "1";
     $dt = array($kd, $nameProject, $companyName, $cp, $phone, $email, $status);
     // print_r($dt);
-    $user = 'root';
-    $pass = 'root';
-    $dbh = new PDO('mysql:host=localhost;dbname=database', $user, $pass);
-
     $sql = "INSERT INTO tb_temporary_perusahaan (no_pendaftaran, nama_perusahaan, cp, phone, email, kebutuhan, nama_project, status) VALUES (:kode, :nama, :cp, :telp, :email, :kebutuhan, :nama_project, :st)";
-    $stmt = $dbh->prepare($sql);
+    $stmt = $data->runQuery($sql);
     $stmt->execute(array(
         ':kode'	=>$nomor,
         ':nama'	=>$companyName,
@@ -51,7 +47,7 @@ if(isset($_POST['ajukanBPO'])){
 
 }elseif(isset($_POST['ajukanMPO'])){
    
-    $$jenisPekerjaan = array();
+    $jenisPekerjaan = array();
     $jenisData = $_POST['pekerjaan'];
     if(empty($jenisData)){
         $error = "data kosong";
@@ -70,13 +66,8 @@ if(isset($_POST['ajukanBPO'])){
     $status      = "1";
     $nameProject = "NULL";
 
-
-    $user = 'root';
-    $pass = 'root';
-    $dbh = new PDO('mysql:host=localhost;dbname=database', $user, $pass);
-
     $sql = "INSERT INTO tb_temporary_perusahaan (no_pendaftaran, nama_perusahaan, cp, phone, email, kebutuhan, kode_pekerjaan, nama_project, status) VALUES (:kode, :nama, :cp, :telp, :email, :kebutuhan, :pekerjaan, :nama_project, :st)";
-    $stmt = $dbh->prepare($sql);
+    $stmt = $data->runQuery($sql);
     $stmt->execute(array(
         ':kode'	=>$nomor,
         ':nama'	=>$companyName,
@@ -84,7 +75,7 @@ if(isset($_POST['ajukanBPO'])){
         ':telp'	=>$phone,
         ':email' =>$email,
         ':kebutuhan' =>$kd,
-        ':pekerjaan' =>$jenisPekerjaan,
+        ':pekerjaan' =>$kategori,
         ':nama_project'	=>$nameProject,
         ':st' =>$status));
     if (!$stmt) {
@@ -95,19 +86,16 @@ if(isset($_POST['ajukanBPO'])){
        
     }
 }elseif(isset($_POST['ajukanLain'])){
-    
+    $nameProject = 'NULL';
     $kd          = 'NULL';
     $companyName = $_POST['txt_nama'];
     $cp          = $_POST['txt_cp'];
     $phone       = $_POST['txt_phone'];
     $email       = $_POST['txt_email'];
     $status      = "1";
-    $user = 'root';
-    $pass = 'root';
-    $dbh = new PDO('mysql:host=localhost;dbname=database', $user, $pass);
-
+    
     $sql = "INSERT INTO tb_temporary_perusahaan (no_pendaftaran, nama_perusahaan, cp, phone, email, kebutuhan, nama_project, status) VALUES (:kode, :nama, :cp, :telp, :email, :kebutuhan, :nama_project, :st)";
-    $stmt = $dbh->prepare($sql);
+    $stmt = $data->runQuery($sql);
     $stmt->execute(array(
         ':kode'	=>$nomor,
         ':nama'	=>$companyName,

@@ -69,10 +69,44 @@ class USER
 			echo $e->getMessage();
 		}
 	}
+
+	public function corLogin($uname, $upass)
+	{
+		try
+		{
+			$stmt = $this->conn->prepare("SELECT kd_perusahaan, password FROM tb_login_perusahaan WHERE kd_perusahaan=:kode");
+			$stmt->execute(array(':kode'=>$uname));
+			$userRow=$stmt->fetch(PDO::FETCH_ASSOC);
+			if($stmt->rowCount() == 1)
+			{
+				if(password_verify($upass, $userRow['password']))
+				{
+					$_SESSION['kode_session'] = $userRow['kd_perusahaan'];
+					return true;
+				}
+				else
+				{
+					return false;
+				}
+			}
+		}
+		catch(PDOException $e)
+		{
+			echo $e->getMessage();
+		}
+	}
 	
 	public function is_loggedin()
 	{
 		if(isset($_SESSION['user_session']))
+		{
+			return true;
+		}
+	}
+
+	public function is_loggedCop()
+	{
+		if(isset($_SESSION['kode_session']))
 		{
 			return true;
 		}
