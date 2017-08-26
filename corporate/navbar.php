@@ -18,8 +18,8 @@
             <li class="dropdown">
                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">corporate  <span class="caret"></span></a>
                <ul class="dropdown-menu">
-                  <li><a href="?p=update">informasi request</a></li>
-                  <li><a href="?p=update">request kebutuhan</a></li>
+                  <li><a href="?p=infoReq">informasi request</a></li>
+                  <li><a href="?p=req">request kebutuhan</a></li>
                   <li><a href="?p=update">complain</a></li>
                   
                </ul>
