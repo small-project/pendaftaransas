@@ -26,7 +26,7 @@ $code = $_SESSION['kode'];
             <?php 
                 $data = new USER();
 
-        $sql = "SELECT tb_list_perkerjaan_perusahaan.name_list, tb_list_perkerjaan_perusahaan.total, tb_list_perkerjaan_perusahaan.status, tb_jenis_pekerjaan.nama_pekerjaan FROM tb_list_perkerjaan_perusahaan INNER JOIN tb_jenis_pekerjaan ON tb_jenis_pekerjaan.kd_pekerjaan = tb_list_perkerjaan_perusahaan.name_list WHERE tb_list_perkerjaan_perusahaan.status = 0";
+        $sql = "SELECT tb_list_perkerjaan_perusahaan.id, tb_list_perkerjaan_perusahaan.name_list, tb_list_perkerjaan_perusahaan.total, tb_list_perkerjaan_perusahaan.status, tb_jenis_pekerjaan.nama_pekerjaan FROM tb_list_perkerjaan_perusahaan INNER JOIN tb_jenis_pekerjaan ON tb_jenis_pekerjaan.kd_pekerjaan = tb_list_perkerjaan_perusahaan.name_list WHERE tb_list_perkerjaan_perusahaan.status = 0";
         $stmt = $data->runQuery($sql);
         $stmt->execute();
 
