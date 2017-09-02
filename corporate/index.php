@@ -4,6 +4,7 @@ require_once 'header.php';
 require_once 'class.user.php';
 
 $set = new USER();
+$kodeMPO = $set->generateRandomString(24);;
 
 if (isset($_POST['cekKebutuhan'])) {
 	# code...
@@ -24,6 +25,8 @@ if (isset($_POST['cekKebutuhan'])) {
             break;
             case "MPO01":
             header('Location: pengajuan.php?p=mpo');
+            session_start();
+            $_SESSION['kode'] = $kodeMPO;
             break;
             default:
             header('Location: pengajuan.php?p=default');
@@ -31,6 +34,9 @@ if (isset($_POST['cekKebutuhan'])) {
 
 	}
 }
+$upass = "admin123";
+$new_password = password_hash($upass, PASSWORD_DEFAULT);
+
 ?>
 
 <div class="signin-form">

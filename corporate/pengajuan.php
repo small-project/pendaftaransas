@@ -5,12 +5,14 @@
  if (isset($_POST['addList'])) {
     	$namePekerjaan = $_POST['listPekerjaan'];
     	$jmlh = $_POST['total'];
+        $kode = $_POST['kodeMPO'];
 
     	$data = new USER();
 
-    	$sql = "INSERT INTO tb_list_perkerjaan_perusahaan (name_list, total) VALUES (:name, :total)";
+    	$sql = "INSERT INTO tb_list_perkerjaan_perusahaan (code, name_list, total) VALUES (:kode, :name, :total)";
     	$stmt = $data->runQuery($sql);
     	$stmt->execute(array(
+            ':kode' => $kode,
     		':name' => $namePekerjaan,
     		':total' => $jmlh
     		));

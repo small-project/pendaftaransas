@@ -2,6 +2,7 @@
 require_once 'class.user.php';
  require_once 'header.php';
 
+
 $data = new USER();
 $cek = new USER();
 $tbName = "tb_temporary_perusahaan";
@@ -48,16 +49,7 @@ if(isset($_POST['ajukanBPO'])){
 }elseif(isset($_POST['ajukanMPO'])){
    
     $jenisPekerjaan = array();
-    $jenisData = $_POST['pekerjaan'];
-    if(empty($jenisData)){
-        $error = "data kosong";
-    }else{
-        foreach ($jenisData as $jenis){
-            array_push($jenisPekerjaan, $jenis);
-        }
-        $kategori = serialize($jenisPekerjaan);
-        //* print_r($jenisPekerjaan); *//
-    }
+
     $kd          = $_POST['txt_kd'];
     $companyName = $_POST['txt_nama'];
     $cp          = $_POST['txt_cp'];
@@ -65,25 +57,39 @@ if(isset($_POST['ajukanBPO'])){
     $email       = $_POST['txt_email'];
     $status      = "1";
     $nameProject = "NULL";
+    $kebutuhan   = "MPO01";
+    $kategori  = "NULL";
+    $st = "1";
 
-    $sql = "INSERT INTO tb_temporary_perusahaan (no_pendaftaran, nama_perusahaan, cp, phone, email, kebutuhan, kode_pekerjaan, nama_project, status) VALUES (:kode, :nama, :cp, :telp, :email, :kebutuhan, :pekerjaan, :nama_project, :st)";
-    $stmt = $data->runQuery($sql);
+    $query = "UPDATE tb_list_perkerjaan_perusahaan SET code = :kode1, status = :st WHERE code = :kode2";
+    $stmt = $data->runQuery($query);
     $stmt->execute(array(
-        ':kode'	=>$nomor,
-        ':nama'	=>$companyName,
-        ':cp'	=>$cp,
-        ':telp'	=>$phone,
-        ':email' =>$email,
-        ':kebutuhan' =>$kd,
-        ':pekerjaan' =>$kategori,
-        ':nama_project'	=>$nameProject,
-        ':st' =>$status));
+        ':kode1' => $nomor,
+        ':st'    => $st,
+        ':kode2' => $kd));
     if (!$stmt) {
         # code...
-        $pesan =  "DATA TIDAK MASUK KE DATABASE";
-    }else{
-        $pesan =  "Data Berhasil Diajukan. <p>Selanjutnya Anda akan dihubungi oleh pihak sales kami.</p>";
-       
+        echo "data tidak bisa update";
+    } else {
+            $sql = "INSERT INTO tb_temporary_perusahaan (no_pendaftaran, nama_perusahaan, cp, phone, email, kebutuhan, kode_pekerjaan, nama_project, status) VALUES (:kode, :nama, :cp, :telp, :email, :kebutuhan, :pekerjaan, :nama_project, :st)";
+        $stmt = $data->runQuery($sql);
+        $stmt->execute(array(
+            ':kode' =>$nomor,
+            ':nama' =>$companyName,
+            ':cp'   =>$cp,
+            ':telp' =>$phone,
+            ':email' =>$email,
+            ':kebutuhan' =>$kebutuhan,
+            ':pekerjaan' =>$kategori,
+            ':nama_project' =>$nameProject,
+            ':st' =>$status));
+        if (!$stmt) {
+            # code...
+            $pesan =  "DATA TIDAK MASUK KE DATABASE";
+        }else{
+            $pesan =  "Data Berhasil Diajukan. <p>Selanjutnya Anda akan dihubungi oleh pihak sales kami.</p>";
+           
+        }
     }
 }elseif(isset($_POST['ajukanLain'])){
     $nameProject = 'NULL';

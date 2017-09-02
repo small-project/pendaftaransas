@@ -1,3 +1,8 @@
+<?php 
+session_start();
+
+$code = $_SESSION['kode'];
+?>
 <style type="text/css">
     .modal-sm {
     width: 500px;
@@ -21,14 +26,14 @@
             <?php 
                 $data = new USER();
 
-        $sql = "SELECT * FROM tb_list_perkerjaan_perusahaan";
+        $sql = "SELECT tb_list_perkerjaan_perusahaan.name_list, tb_list_perkerjaan_perusahaan.total, tb_list_perkerjaan_perusahaan.status, tb_jenis_pekerjaan.nama_pekerjaan FROM tb_list_perkerjaan_perusahaan INNER JOIN tb_jenis_pekerjaan ON tb_jenis_pekerjaan.kd_pekerjaan = tb_list_perkerjaan_perusahaan.name_list WHERE tb_list_perkerjaan_perusahaan.status = 0";
         $stmt = $data->runQuery($sql);
         $stmt->execute();
 
         while ($row = $stmt->fetch(PDO::FETCH_LAZY)) {
             ?>
                 <tr>
-                    <td><?=$row['name_list']?></td>
+                    <td><?=$row['nama_pekerjaan']?></td>
                     <td><?=$row['total']?></td>
                     <td>
                     <a href="deleteList.php?id=<?=$row['id']?>" onClick="return confirm('Are you sure delete?')">
@@ -59,7 +64,7 @@
         <div class="form-group">
 
         	<div class="form-group">
-			        <input type="hidden" class="form-control" name="txt_kd" value="<?php echo $nomor; ?>" />
+			        <input type="hidden" class="form-control" name="txt_kd" value="<?php echo $code; ?>" />
 			        <span id="check-e"></span>
 	        </div>
 
@@ -103,6 +108,7 @@
       <div class="modal-content">
         <div class="modal-body">
 <form class="form-inline" method="post" action="">
+<input type="hidden" name="kodeMPO" value="<?=$code?>">
       <div class="form-group">
       <select name="listPekerjaan" class="form-control" required>
                         <option value="0">--list pekerjaan--</option>
