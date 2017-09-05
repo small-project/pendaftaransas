@@ -16,8 +16,6 @@ $stmt->execute(array(
         ':id' => $user_id,
         ':data' => $data
     ));
-    $row = $dt->fetch(PDO::FETCH_LAZY);
-
 ?>
 <div class="row">
     <div class="col-md-8 col-md-offset-2">
@@ -26,10 +24,35 @@ $stmt->execute(array(
                <?=$row['nama_subject'];?> 
             </div>
             <div class="panel-body">
-                <?=$row['pesan'];?>
+            <?php 
+                while($row = $dt->fetch(PDO::FETCH_LAZY)){
+                    if($row['inisial'] == $user_id){
+                        $kode = 'class="blockquote-reverse"';
+                    }else{
+                        $kode = '';
+                    }
+            ?>
+            <blockquote <?=$kode?>>
+                <p><?=$row['pesan'];?></p>
+                <small><?=$row['inisial'];?></small>
+                <i><small><?=$row['create_date'];?></small></i>
+            </blockquote>
+                <?php }
+
+$sq = "SELECT tb_push.kd_push, tb_push.subject, tb_push.dari, tb_push.kepada, tb_detail_push.kd_detail, tb_detail_push.inisial, tb_detail_push.pesan, tb_detail_push.create_date, tb_detail_push.read_date, tb_subject_push.nama_subject FROM tb_push 
+INNER JOIN tb_detail_push ON tb_detail_push.kd_push = tb_push.kd_push 
+INNER JOIN tb_subject_push ON tb_subject_push.kd_subject = tb_push.subject
+WHERE tb_push.kepada = :id AND tb_push.kd_push = :data";
+$mg = $auth_user->runQuery($sq);
+$mg->execute(array(
+    ':id' => $user_id,
+    ':data' => $data
+));
+$id = $mg->fetch(PDO::FETCH_LAZY);
+                ?>
             </div>
             <div class="panel-footer">
-            <i><small><?=$row['create_date'];?></small></i>
+            <b><i><a href="?p=reply&data=<?=$id['subject']?>">Reply</a></i></b>
             </div>
         </div>
     </div>

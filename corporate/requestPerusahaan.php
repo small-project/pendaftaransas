@@ -1,10 +1,5 @@
 <?php 
-
-require_once 'header.php';
-require_once 'class.user.php';
-
 $set = new USER();
-$kodeMPO = $set->generateRandomString(24);;
 
 if (isset($_POST['cekKebutuhan'])) {
 	# code...
@@ -21,22 +16,17 @@ if (isset($_POST['cekKebutuhan'])) {
         
         switch ($jenis){
             case "BPO01":
-            header('Location: pengajuan.php?p=bpo');
+            header('Location: ?p=reqBPO');
             break;
             case "MPO01":
-            header('Location: pengajuan.php?p=mpo');
-            session_start();
-            $_SESSION['kode'] = $kodeMPO;
+            header('Location: ?p=reqMPO');
             break;
             default:
-            header('Location: pengajuan.php?p=default');
+            header('Location: ?p=reqDefault');
         }
 
 	}
 }
-$upass = "admin123";
-$new_password = password_hash($upass, PASSWORD_DEFAULT);
-
 ?>
 
 <div class="signin-form">
@@ -99,26 +89,3 @@ $new_password = password_hash($upass, PASSWORD_DEFAULT);
     
 </div>
 <br>
-<div class="col-md-8 col-md-offset-2">
-    <div class="well">
-        <h4>Keterangan</h4>
-        <ul>
-            <li>BPO : 
-                <p>Adalah</p>
-            </li>
-            <li>MPO : 
-                <p>Adalah</p>
-            </li>
-            <li>System Integrator : 
-                <p>Adalah</p>
-            </li>
-            <li>Konsultan : 
-                <p>Adalah</p>
-            </li>
-        </ul>
-    </div>
-</div>
-
-<?php
-require_once'footer.php';
- ?>

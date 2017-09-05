@@ -1,71 +1,33 @@
 <?php
-require_once 'header.php';
+require_once'header.php';
 session_start();
-require_once('class.user.php');
-$user = new USER();
+require_once("class.user.php");
+$login = new USER();
 
-if($user->is_loggedin()!="")
+if($login->is_loggedin()!="")
 {
-	$user->redirect('index.php');
+	$login->redirect('home.php');
 }
 
-if(isset($_POST['btn-signup']))
+if(isset($_POST['btn-login']))
 {
-	$uname = strip_tags($_POST['txt_uname']);
-	$umail = strip_tags($_POST['txt_umail']);
-	$upass = strip_tags($_POST['txt_upass']);	
-	
-	if($uname=="")	{
-		$error[] = "KTP NOT EMPTY";	
-	}
-	else if(!is_numeric($uname))
+	$uname = strip_tags($_POST['txt_email']);
+	$upass = strip_tags($_POST['txt_upass']);
+		
+	if($login->corLogin($uname, $upass))
 	{
-		$error[] = "KTP ONLY NUMBER";
-	}
-	elseif (strlen($uname) <= 15) {
-		# code...
-		$error[] = "KTP ONLY 16 DIGIT";
-	}
-	else if($umail=="")	{
-		$error[] = "EMAIL NOT EMPTY";	
-	}
-	else if(!filter_var($umail, FILTER_VALIDATE_EMAIL))	{
-	    $error[] = 'ENTER VALID EMAIL';
-	}
-	else if($upass=="")	{
-		$error[] = "PASSWORD NOT EMPTY";
-	}
-	else if(strlen($upass) < 6){
-		$error[] = "MINIMUM PASSWORD 6";	
+		$login->redirect('home.php');
 	}
 	else
 	{
-		try
-		{
-			$stmt = $user->runQuery("SELECT no_ktp, email FROM tb_login_karyawan WHERE no_ktp=:uname OR email=:umail");
-			$stmt->execute(array(':uname'=>$uname, ':umail'=>$umail));
-			$row=$stmt->fetch(PDO::FETCH_ASSOC);
-				
-			if($row['no_ktp']==$uname) {
-				$error[] = "sorry KTP already taken !";
-			}
-			else if($row['email']==$umail) {
-				$error[] = "sorry EMAIL id already taken !";
-			}
-			else
-			{
-				if($user->register($uname,$umail,$upass)){	
-					$user->redirect('sign-up.php?joined');
-				}
-			}
-		}
-		catch(PDOException $e)
-		{
-			echo $e->getMessage();
-		}
+		$error = "kode or password wrong !";
 	}	
 }
 
+$upass = "admin123";
+
+$new_password = password_hash($upass, PASSWORD_DEFAULT);
+//echo $new_password;
 ?>
 
 
@@ -73,19 +35,17 @@ if(isset($_POST['btn-signup']))
 
 <div class="container">
     	
-        <form method="post" class="form-signin" action="home2.php">
+        <form method="post" class="form-signin" action="">
             <h2 class="form-signin-heading">Sign up Corporate</h2><hr />
             <?php
 			if(isset($error))
 			{
-			 	foreach($error as $error)
-			 	{
 					 ?>
-                     <div class="alert alert-danger">
-                        <i class="glyphicon glyphicon-warning-sign"></i> &nbsp; <?php echo $error; ?>
+                     <div div class="alert alert-danger alert-dismissible" role="alert">
+					 <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <i class="glyphicon glyphicon-danger-sign"></i> &nbsp; <?php echo $error; ?>
                      </div>
                      <?php
-				}
 			}
 			else if(isset($_GET['joined']))
 			{
@@ -97,14 +57,14 @@ if(isset($_POST['btn-signup']))
 			}
 			?>
             <div class="form-group">
-            <input type="text" class="form-control" name="txt_umail" placeholder="kode perusahanan" />
+            <input type="text" class="form-control" name="txt_email" placeholder="kode perusahanan" required />
             </div>
             <div class="form-group">
-            	<input type="password" class="form-control" name="txt_upass" placeholder="enter password" />
+            	<input type="password" class="form-control" name="txt_upass" placeholder="enter password" required />
             </div>
             <div class="clearfix"></div><hr />
             <div class="form-group">
-            	<button type="submit" class="btn btn-primary" name="btn-signup">
+            	<button type="submit" class="btn btn-primary" name="btn-login">
                 	<i class="glyphicon glyphicon-open-file"></i>&nbsp;SIGN UP
                 </button>
             </div>

@@ -1,11 +1,54 @@
+<?php 
+session_start();
+
+$code = $_SESSION['kode'];
+?>
+<style type="text/css">
+    .modal-sm {
+    width: 500px;
+}
+</style>
 <div class="signin-form">
 
 	<div class="container form-signin">
      
-        
+        <h2 class="form-signin-heading">Pendaftaran Perusahaan</h2><hr />
+        <p>
+        <button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#addMPO">+ add</button>
+        </p>
+        <table class="table table-hover table-bordered">
+            <thead>
+                <th style="width: 60%;">Jenis Kebutuhan</th>
+                <th style="width: 30%;">Jumlah</th>
+                <th style="width: 10%;">#</th>
+            </thead>
+            <tbody>
+            <?php 
+                $data = new USER();
+
+        $sql = "SELECT tb_list_perkerjaan_perusahaan.id, tb_list_perkerjaan_perusahaan.name_list, tb_list_perkerjaan_perusahaan.total, tb_list_perkerjaan_perusahaan.status, tb_jenis_pekerjaan.nama_pekerjaan FROM tb_list_perkerjaan_perusahaan INNER JOIN tb_jenis_pekerjaan ON tb_jenis_pekerjaan.kd_pekerjaan = tb_list_perkerjaan_perusahaan.name_list WHERE tb_list_perkerjaan_perusahaan.status = 0";
+        $stmt = $data->runQuery($sql);
+        $stmt->execute();
+
+        while ($row = $stmt->fetch(PDO::FETCH_LAZY)) {
+            ?>
+                <tr>
+                    <td><?=$row['nama_pekerjaan']?></td>
+                    <td><?=$row['total']?></td>
+                    <td>
+                    <a href="deleteList.php?id=<?=$row['id']?>" onClick="return confirm('Are you sure delete?')">
+                        <button class="btn btn-xs btn-danger">
+                            <span class="fa fa-fw fa-trash"></span>
+                        </button>
+                    </a>            
+                    </td>
+                </tr>
+            <?php } ?>
+            </tbody>
+        </table>
        <form class="" method="post" action = "request.php" id="login-form">
       
-        <h2 class="form-signin-heading">Pendaftaran Perusahaan</h2><hr />
+        
         <div id="error">
         <?php
 			if(isset($error))
@@ -19,25 +62,9 @@
 		?>
         </div>
         <div class="form-group">
-			<div class="form-group">
-                    <select id="pekerjaan" name="pekerjaan[]" class="form-control" multiple="multiple" required>
-                        <option value=""></option>
-                        <?php
-                        // ambil data dari database
-						$cek = new USER();
-						$stmt = $cek->runQuery("SELECT * FROM tb_jenis_pekerjaan");
-						$stmt->execute();
-                        while ($row = $stmt->fetch(PDO::FETCH_LAZY)) {
-                            ?>
-                            <option value="<?php echo $row['kd_pekerjaan'] ?>"><?php echo $row['nama_pekerjaan'] ?></option>
-                            <?php
-                        }
-                        ?>
-                    </select>
-                </div>
 
         	<div class="form-group">
-			        <input type="hidden" class="form-control" name="txt_kd" value="<?php echo $nomor; ?>" />
+			        <input type="hidden" class="form-control" name="txt_kd" value="<?php echo $code; ?>" />
 			        <span id="check-e"></span>
 	        </div>
 
@@ -74,4 +101,39 @@
     </div>
     
 </div>
+
+
+<div class="modal fade" id="addMPO" role="dialog">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        <div class="modal-body">
+<form class="form-inline" method="post" action="">
+<input type="hidden" name="kodeMPO" value="<?=$code?>">
+      <div class="form-group">
+      <select name="listPekerjaan" class="form-control" required>
+                        <option value="0">--list pekerjaan--</option>
+                        <?php
+                        // ambil data dari database
+                        $cek = new USER();
+                        $stmt = $cek->runQuery("SELECT * FROM tb_jenis_pekerjaan");
+                        $stmt->execute();
+                        while ($row = $stmt->fetch(PDO::FETCH_LAZY)) {
+                            ?>
+                            <option value="<?php echo $row['kd_pekerjaan'] ?>"><?php echo $row['nama_pekerjaan'] ?></option>
+                            <?php
+                        }
+                        ?>
+                    </select>
+      </div>
+      <div class="form-group">
+        <input type="number" class="form-control" name="total" placeholder="total" required>
+      </div>
+      <button type="submit" name="addList" class="btn btn-default">SIMPAN</button>
+    </form>          
+
+
+        </div>
+      </div>
+    </div>
+  </div>
 
