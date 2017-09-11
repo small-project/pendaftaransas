@@ -1,6 +1,10 @@
 <?php 
 $set = new USER();
 
+
+$set = new USER();
+$kodeMPO = $set->generateRandomString(24);
+
 if (isset($_POST['cekKebutuhan'])) {
 	# code...
 	$kode = $_POST['txt_kode'];
@@ -20,6 +24,14 @@ if (isset($_POST['cekKebutuhan'])) {
             break;
             case "MPO01":
             header('Location: ?p=reqMPO');
+            session_start();
+            $_SESSION['kode'] = $kodeMPO;
+            break;
+            case "SYG01":
+            header('Location: ?p=reqSYS');
+            break;
+            case "KST01":
+            header('Location: ?p=KST');
             break;
             default:
             header('Location: ?p=reqDefault');

@@ -16,8 +16,11 @@
                     case"reqMPO":
                         include "requestPerusahaanMPO.php";
                     break;
-                    case"reqDefault":
-                        include "requestPerusahaanDefault.php";
+                    case"reqSYS":
+                        include 'requestPerusahaanSYS.php';
+                    break;
+                    case"KST":
+                        include 'requestPerusahaanKST.php';
                     break;
                     case"info":
                         include "informasi.php";

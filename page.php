@@ -28,6 +28,9 @@
                     case"reply":
                         include"reply.php";
                     break;
+                    case"detail":
+                        include 'detailProject.php';
+                    break;
                     default:
                         include'default.php';
                         break;
