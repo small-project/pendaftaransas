@@ -4,7 +4,8 @@ require_once 'header.php';
 require_once 'class.user.php';
 
 $set = new USER();
-$kodeMPO = $set->generateRandomString(24);;
+$kodeMPO = $set->generateRandomString(24);
+
 
 if (isset($_POST['cekKebutuhan'])) {
 	# code...
@@ -12,14 +13,19 @@ if (isset($_POST['cekKebutuhan'])) {
 	if ($kode == '0') {
 		# code...
 		$error = "Pilih salah satu jenis Kebutuhan";
-	}elseif($_POST['check'] == ""){
+	}elseif($_POST['check'] == "")
+    {
         $error = "Please Checkbox Persetujuan";
-        }else{
+        
+    }
+    else
+    {
         
         $jenis = $_POST['txt_kode'];
         echo $jenis;
         
-        switch ($jenis){
+        switch ($jenis)
+        {
             case "BPO01":
             header('Location: pengajuan.php?p=bpo');
             break;
@@ -27,6 +33,12 @@ if (isset($_POST['cekKebutuhan'])) {
             header('Location: pengajuan.php?p=mpo');
             session_start();
             $_SESSION['kode'] = $kodeMPO;
+            break;
+            case "SYG01":
+            header('Location: pengajuan.php?p=sys');
+            break;
+            case "KST01":
+            header('Location: pengajuan.php?p=kst');
             break;
             default:
             header('Location: pengajuan.php?p=default');

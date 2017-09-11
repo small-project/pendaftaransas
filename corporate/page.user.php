@@ -10,6 +10,12 @@
                     case"bpo":
                         include "BPO.php";
                         break;
+                    case"sys":
+                        include 'systemIntergrator.php';
+                        break;
+                    case"kst":
+                        include 'konsultan.php';
+                        break;
                     case"default":
                         include "kebutuhan.php";
                         break;
