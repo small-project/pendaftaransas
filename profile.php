@@ -15,6 +15,15 @@
     $manage = $auth_user->runQuery("SELECT tb_push.kd_push, tb_push.dari, tb_push.kepada, tb_detail_push.kd_detail, tb_detail_push.read_date FROM tb_push INNER JOIN tb_detail_push ON tb_detail_push.kd_push = tb_push.kd_push WHERE tb_push.kepada = :user_id AND tb_detail_push.read_date IS NULL");
     $manage->execute(array(":user_id"=>$user_id));
     $count = $manage->rowCount();
+  $pj = "SELECT * FROM tb_apply_pekerjaan WHERE no_ktp = :id";
+  $mg = $auth_user->runQuery($pj);
+  $mg->execute(array(':id' => $user_id));
+  if ($n = $mg->rowCount() <= 0 ) {
+    # code...
+    $g = '<div class="alert alert-danger"> <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+  <strong>Danger!</strong> anda belum memilih salah satu jenis pekerjaan.
+</div>';
+  }
 
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -84,6 +93,7 @@
         <?php
             require 'page.php';
           ?>
+          <div class="container"><?=$g?></div>
       
 
 

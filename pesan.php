@@ -15,13 +15,14 @@ $stmt->execute(array(
 <?php 
     while ($row = $stmt->fetch(PDO::FETCH_LAZY)){
         $query = "SELECT tb_push.kd_push, tb_push.subject, tb_push.dari, tb_push.kepada, tb_detail_push.kd_detail, tb_detail_push.inisial, tb_detail_push.pesan, tb_detail_push.create_date, tb_detail_push.read_date FROM tb_push 
-        INNER JOIN tb_detail_push ON tb_detail_push.kd_push = tb_push.kd_push WHERE tb_push.kepada  = :id";
+        INNER JOIN tb_detail_push ON tb_detail_push.kd_push = tb_push.kd_push WHERE tb_push.kepada  = :id ORDER BY tb_detail_push.read_date ASC";
         $tq = $auth_user->runQuery($query);
         $tq->execute(array(
             ':id'   => $user_id
         ));
         $col = $tq->fetch(PDO::FETCH_LAZY);
-        if($col['read_date'] == NULL){
+        echo $col['read_date'];
+        if($row['kd_push'] == $col['kd_push'] AND $col['read_date'] == NULL){
             $st = "<span class='text-success'>Unread</span>";
         }else{
             $st = "<span class='text-default'>Read</span>";
