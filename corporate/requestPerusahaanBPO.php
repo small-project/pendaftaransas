@@ -36,11 +36,11 @@
 			        <span id="check-e"></span>
 	        </div>
 	        <div class="form-group">
-			        <input type="text" class="form-control" name="txt_cp" value="<?=$info['cp']?>" />
+			        <input type="text" class="form-control" name="txt_cp" value="<?=$info['contact_person']?>" />
 			        <span id="check-e"></span>
 	        </div>
 	        <div class="form-group">
-			        <input type="number" class="form-control" name="txt_phone" value="<?=$info['phone']?>" />
+			        <input type="number" class="form-control" name="txt_phone" value="<?=$info['nomor_hp']?>" />
 			        <span id="check-e"></span>
 	        </div>
 	        <div class="form-group">

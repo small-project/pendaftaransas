@@ -48,7 +48,7 @@ if(isset($_FILES["FileInput"]) && $_FILES["FileInput"]["error"]== UPLOAD_ERR_OK)
 	
 	$File_Name          = strtolower($_FILES['FileInput']['name']);
 	$File_Ext           = substr($File_Name, strrpos($File_Name, '.')); //get file extention
-	$Random_Number      = $_SESSION['user_session'] . ' - ' .$_POST['type_file']; //Random number to be added to name.
+	$Random_Number      = $_SESSION['user_session'] . '_' .$_POST['type_file']; //Random number to be added to name.
 	$NewFileName 		= $Random_Number.$File_Ext; //new file name
 	
 	if(move_uploaded_file($_FILES['FileInput']['tmp_name'], $UploadDirectory.$NewFileName ))
