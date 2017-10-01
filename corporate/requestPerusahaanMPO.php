@@ -59,8 +59,8 @@ $code = $_SESSION['kode'];
         </div>
         
             <div class="form-group">
-                    <input type="hidden" class="form-control" name="txt_kd" value="<?php echo $nomor; ?>" />
-                    <input type="text" name="txt_kodePerusahaan" value="<?=$info['kode_perusahaan']?>">
+                    <input type="text" class="form-control" name="txt_kd" value="<?php echo $nomor; ?>" />
+                    <input type="hidden" name="txt_kodePerusahaan" value="<?=$info['kode_perusahaan']?>">
                     <span id="check-e"></span>
             </div>
 
@@ -69,11 +69,11 @@ $code = $_SESSION['kode'];
                     <span id="check-e"></span>
             </div>
             <div class="form-group">
-                    <input type="text" class="form-control" name="txt_cp" value="<?=$info['cp']?>" required />
+                    <input type="text" class="form-control" name="txt_cp" value="<?=$info['contact_person']?>" required />
                     <span id="check-e"></span>
             </div>
             <div class="form-group">
-                    <input type="number" class="form-control" name="txt_phone" value="<?=$info['phone']?>" required />
+                    <input type="number" class="form-control" name="txt_phone" value="<?=$info['nomor_hp']?>" required />
                     <span id="check-e"></span>
             </div>
             <div class="form-group">

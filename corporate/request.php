@@ -25,7 +25,7 @@ if(isset($_POST['ajukanBPO'])){
     $cp          = $_POST['txt_cp'];
     $phone       = $_POST['txt_phone'];
     $email       = $_POST['txt_email'];
-    $status      = "1";
+    $status      = "0";
     $dt = array($kd, $nameProject, $companyName, $cp, $phone, $email, $status);
     // print_r($dt);
     $sql = "INSERT INTO tb_temporary_perusahaan (no_pendaftaran, nama_perusahaan, cp, phone, email, kebutuhan, nama_project, status) VALUES (:kode, :nama, :cp, :telp, :email, :kebutuhan, :nama_project, :st)";
@@ -58,7 +58,7 @@ if(isset($_POST['ajukanBPO'])){
     $nameProject = "NULL";
     $kebutuhan   = "MPO01";
     $kategori  = "NULL";
-    $st = "1";
+    $st = "0";
 
     $query = "UPDATE tb_list_perkerjaan_perusahaan SET code = :kode1, status = :st WHERE code = :kode2";
     $stmt = $data->runQuery($query);
@@ -97,7 +97,7 @@ if(isset($_POST['ajukanBPO'])){
     $cp          = $_POST['txt_cp'];
     $phone       = $_POST['txt_phone'];
     $email       = $_POST['txt_email'];
-    $status      = "1";
+    $status      = "0";
     
     $sql = "INSERT INTO tb_temporary_perusahaan (no_pendaftaran, nama_perusahaan, cp, phone, email, kebutuhan, nama_project, status) VALUES (:kode, :nama, :cp, :telp, :email, :kebutuhan, :nama_project, :st)";
     $stmt = $data->runQuery($sql);
@@ -124,7 +124,7 @@ elseif(isset($_POST['kst'])){
     $cp          = $_POST['txt_cp'];
     $phone       = $_POST['txt_phone'];
     $email       = $_POST['txt_email'];
-    $status      = "1";
+    $status      = "0";
     
     $sql = "INSERT INTO tb_temporary_perusahaan (no_pendaftaran, nama_perusahaan, cp, phone, email, kebutuhan, nama_project, status) VALUES (:kode, :nama, :cp, :telp, :email, :kebutuhan, :nama_project, :st)";
     $stmt = $data->runQuery($sql);

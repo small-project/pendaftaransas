@@ -21,7 +21,7 @@
   if ($n = $mg->rowCount() <= 0 ) {
     # code...
     $g = '<div class="alert alert-danger"> <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-  <strong>Danger!</strong> anda belum memilih salah satu jenis pekerjaan.
+  <strong>Danger!</strong> anda belum memilih salah satu jenis pekerjaan. <a href="?p=pilihPekerjaan">pilih</a> minimal satu pekerjaan.
 </div>';
   }
 
@@ -88,15 +88,13 @@
    </div>
    <!-- /.container-fluid -->
 </nav>
-
+  
 
         <?php
+            echo'<div class="">'.$g.'</div>';
             require 'page.php';
           ?>
-          <div class="container"><?=$g?></div>
-      
-
-
+          
 
   <script type="text/javascript" src="vendor/jquery/jquery.min.js"></script>
   <script type="text/javascript" src="vendor/bootstrap/js/bootstrap.min.js"></script>
