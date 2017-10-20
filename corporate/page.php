@@ -7,6 +7,12 @@
                     case"infoReq":
                         include "infoReq.php";
                     break;
+                    case"detailKaryawan":
+                        include "detailKaryawan.php";
+                    break;
+                    case"detail":
+                        include "detail.php";
+                    break;
                     case"req":
                         include "requestPerusahaan.php";
                     break;
