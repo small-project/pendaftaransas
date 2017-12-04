@@ -1,4 +1,4 @@
-<?php 
+<?php
 session_start();
 
 $code = $_SESSION['kode'];
@@ -11,7 +11,7 @@ $code = $_SESSION['kode'];
 <div class="signin-form">
 
 	<div class="container form-signin">
-     
+
         <h2 class="form-signin-heading">Pendaftaran Perusahaan</h2><hr />
         <p>
         <button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#addMPO">+ add</button>
@@ -23,10 +23,10 @@ $code = $_SESSION['kode'];
                 <th style="width: 10%;">#</th>
             </thead>
             <tbody>
-            <?php 
+            <?php
                 $data = new USER();
 
-        $sql = "SELECT tb_list_perkerjaan_perusahaan.id, tb_list_perkerjaan_perusahaan.name_list, tb_list_perkerjaan_perusahaan.total, tb_list_perkerjaan_perusahaan.status, tb_jenis_pekerjaan.nama_pekerjaan FROM tb_list_perkerjaan_perusahaan INNER JOIN tb_jenis_pekerjaan ON tb_jenis_pekerjaan.kd_pekerjaan = tb_list_perkerjaan_perusahaan.name_list WHERE tb_list_perkerjaan_perusahaan.status = 0";
+        $sql = "SELECT tb_list_perkerjaan_perusahaan.id, tb_list_perkerjaan_perusahaan.name_list, tb_list_perkerjaan_perusahaan.code, tb_list_perkerjaan_perusahaan.total, tb_list_perkerjaan_perusahaan.status, tb_jenis_pekerjaan.nama_pekerjaan FROM tb_list_perkerjaan_perusahaan INNER JOIN tb_jenis_pekerjaan ON tb_jenis_pekerjaan.kd_pekerjaan = tb_list_perkerjaan_perusahaan.name_list WHERE tb_list_perkerjaan_perusahaan.status = 0 AND tb_list_perkerjaan_perusahaan.code = ''";
         $stmt = $data->runQuery($sql);
         $stmt->execute();
 
@@ -40,15 +40,15 @@ $code = $_SESSION['kode'];
                         <button class="btn btn-xs btn-danger">
                             <span class="fa fa-fw fa-trash"></span>
                         </button>
-                    </a>            
+                    </a>
                     </td>
                 </tr>
             <?php } ?>
             </tbody>
         </table>
        <form class="" method="post" action = "request.php" id="login-form">
-      
-        
+
+
         <div id="error">
         <?php
 			if(isset($error))
@@ -85,21 +85,21 @@ $code = $_SESSION['kode'];
 			        <span id="check-e"></span>
 	        </div>
         </div>
-       
+
      	<hr />
-        
+
         <div class="form-group">
             <button type="submit" name="ajukanMPO" class="btn btn-success">
                 	<i class="glyphicon glyphicon-send	"></i> &nbsp; Ajukan Kebutuhan
             </button>
-        </div>  
+        </div>
         <hr>
       	<br />
-            
+
       </form>
     <label>Jika perusahaan anda telah Terdaftar, <a href="sign-up.php"><button class="btn btn-sm btn-primary"><span class="glyphicon glyphicon-log-in"></span> Masuk</button></a></label>
     </div>
-    
+
 </div>
 
 
@@ -129,11 +129,10 @@ $code = $_SESSION['kode'];
         <input type="number" class="form-control" name="total" placeholder="total" required>
       </div>
       <button type="submit" name="addList" class="btn btn-default">SIMPAN</button>
-    </form>          
+    </form>
 
 
         </div>
       </div>
     </div>
   </div>
-

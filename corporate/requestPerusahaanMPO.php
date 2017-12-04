@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 session_start();
 
@@ -20,12 +20,12 @@ $code = $_SESSION['kode'];
                 <th style="width: 10%;">#</th>
             </thead>
             <tbody>
-            <?php 
+            <?php
                 $data = new USER();
 
-        $sql = "SELECT tb_list_perkerjaan_perusahaan.id, tb_list_perkerjaan_perusahaan.name_list, tb_list_perkerjaan_perusahaan.total, tb_list_perkerjaan_perusahaan.status, tb_jenis_pekerjaan.nama_pekerjaan FROM tb_list_perkerjaan_perusahaan INNER JOIN tb_jenis_pekerjaan ON tb_jenis_pekerjaan.kd_pekerjaan = tb_list_perkerjaan_perusahaan.name_list WHERE tb_list_perkerjaan_perusahaan.status = 0";
+        $sql = "SELECT tb_list_perkerjaan_perusahaan.id, tb_list_perkerjaan_perusahaan.code, tb_list_perkerjaan_perusahaan.name_list, tb_list_perkerjaan_perusahaan.total, tb_list_perkerjaan_perusahaan.status, tb_jenis_pekerjaan.nama_pekerjaan FROM tb_list_perkerjaan_perusahaan INNER JOIN tb_jenis_pekerjaan ON tb_jenis_pekerjaan.kd_pekerjaan = tb_list_perkerjaan_perusahaan.name_list WHERE tb_list_perkerjaan_perusahaan.status = 0 AND tb_list_perkerjaan_perusahaan.code = :kodeMPO";
         $stmt = $data->runQuery($sql);
-        $stmt->execute();
+        $stmt->execute(array(':kodeMPO' => $code));
 
         while ($row = $stmt->fetch(PDO::FETCH_LAZY)) {
             ?>
@@ -37,13 +37,13 @@ $code = $_SESSION['kode'];
                         <button class="btn btn-xs btn-danger">
                             <span class="fa fa-fw fa-trash"></span>
                         </button>
-                    </a>            
+                    </a>
                     </td>
                 </tr>
             <?php } ?>
             </tbody>
-        </table>  
-        
+        </table>
+
        <form class="" method="post" action="act.php" id="login-form">
         <div id="error">
         <?php
@@ -57,9 +57,9 @@ $code = $_SESSION['kode'];
 			}
 		?>
         </div>
-        
+
             <div class="form-group">
-                    <input type="text" class="form-control" name="txt_kd" value="<?php echo $nomor; ?>" />
+                    <input type="hidden" class="form-control" name="txt_kd" value="<?php echo $code; ?>" />
                     <input type="hidden" name="txt_kodePerusahaan" value="<?=$info['kode_perusahaan']?>">
                     <span id="check-e"></span>
             </div>
@@ -80,19 +80,18 @@ $code = $_SESSION['kode'];
                     <input type="email" class="form-control" name="txt_email" value="<?=$info['email']?>" required />
                     <span id="check-e"></span>
             </div>
-       
+
      	<hr />
-        
+
         <div class="form-group">
             <button type="submit" name="ajukanMPO" class="btn btn-success">
                 	<i class="glyphicon glyphicon-send	"></i> &nbsp; Ajukan Kebutuhan
             </button>
-        </div>  
+        </div>
         <hr>
       	<br />
-            
+
       </form>
     </div>
-    
-</div>
 
+</div>

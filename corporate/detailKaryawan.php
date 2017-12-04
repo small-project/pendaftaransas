@@ -208,4 +208,58 @@ $userRow = $stmt->fetch(PDO::FETCH_LAZY);
         </div>
     </div>
 
+</form>
+</div>
+</div>
+<div class="panel panel-success">
+        <div class="panel-heading" role="tab" id="headingTwo">
+            <h4 class="panel-title">
+                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    Informasi Pendidikan
+                </a>
+            </h4>
+        </div>
+
+        <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+            <div class="panel-body">
+
+                <br><br>
+
+                <table class="table table-hover table-bordered">
+                    <thead>
+                        <th>Tingkat Pendidikan</th>
+                        <th>Nama Badan Pendidikan</th>
+                        <th>Jurusan</th>
+                        <th>Tahun Masuk</th>
+                        <th>Tahun Lulus</th>
+                        <th>Nilai</th>
+                    </thead>
+                    <tbody>
+                        <?php 
+                        $query = "SELECT * FROM tb_info_pendidikan WHERE no_ktp = :ktp";
+                        $stmt = $config->runQuery($query);
+                        $stmt->execute(array(':ktp' => $noNIP));
+
+                        while ($row = $stmt->fetch(PDO::FETCH_LAZY)) {
+                        ?>
+                        <tr>
+                            <td><?=$row['tingkat']?></td>
+                            <td><?=$row['nama_badan']?></td>
+                            <td><?=$row['jurusan']?></td>
+                            <td><?=$row['tahun_masuk']?></td>
+                            <td><?=$row['tahun_lulus']?></td>
+                            <td><?=$row['nilai']?></td>
+                        </tr>
+                        <?php 
+                            }
+                        ?>
+                    </tbody>
+                </table>
+                <br>
+
+
+            </div>
+        </div>
+    </div>
+
     
