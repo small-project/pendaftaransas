@@ -34,31 +34,31 @@ if (isset($_POST['addUpdate'])) {
     $sql = "UPDATE tb_karyawan SET nama_depan = :depan, nama_belakang = :belakang, nomor_hp = :hp, nomor_telp = :telp, nama_suku = :suku, agama = :agama, status_perkawinan = :status, tinggi_badan = :tinggi, berat_badan = :berat, no_NPWP = :npwp, no_BPJS = :bpjs ,nomor_sim = :nomorSim, jenis_sim = :jenisSim, status_tempat_tinggal = :tmpt, alamat = :alamat, kelurahan = :kel, kecamatan = :kec, kota = :kota WHERE no_ktp = :ktp";
     $stmt = $auth_user->runQuery($sql);
     $stmt->execute(array(
-        ':depan'	=> $nama_depan,
-        ':belakang'	=> $nama_belakang,
-        ':hp'		=> $hp,
-        ':telp'		=> $telp,
-        ':suku'		=> $suku,
-        ':agama'	=> $agama,
-        ':status'	=> $status,
-        ':tinggi'	=> $tinggi,
-        ':berat'	=> $berat,
-        ':npwp'		=> $npwp,
-        ':bpjs'		=> $bpjs,
-        ':nomorSim'	=> $nomor_sim,
-        ':jenisSim'	=> $jenis,
-        ':tmpt'		=> $tmpt,
-        ':alamat'	=> $alamat,
-        ':kel'		=> $kelurahan,
-        ':kec'		=> $kecamatan,
-        ':kota'		=> $kota,
-        ':ktp'		=> $ktp
+        ':depan'    => $nama_depan,
+        ':belakang' => $nama_belakang,
+        ':hp'       => $hp,
+        ':telp'     => $telp,
+        ':suku'     => $suku,
+        ':agama'    => $agama,
+        ':status'   => $status,
+        ':tinggi'   => $tinggi,
+        ':berat'    => $berat,
+        ':npwp'     => $npwp,
+        ':bpjs'     => $bpjs,
+        ':nomorSim' => $nomor_sim,
+        ':jenisSim' => $jenis,
+        ':tmpt'     => $tmpt,
+        ':alamat'   => $alamat,
+        ':kel'      => $kelurahan,
+        ':kec'      => $kecamatan,
+        ':kota'     => $kota,
+        ':ktp'      => $ktp
     ));
     if ($stmt) {
         # code...
         echo "<script>
 alert('Update Success!');
-window.location.href='/SAS/pendaftaran/';
+window.location.href='/profile.php?p=update';
 </script>";
     } else{
         echo "Gagal";
@@ -1021,6 +1021,111 @@ window.location.href='/SAS/pendaftaran/';
                 </div>
             </div>
         </div>
+        
+        
+          <div class="panel panel-success">
+        <div class="panel-heading" role="tab" id="headingTwo">
+            <h4 class="panel-title">
+                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseUpdateFileLamaran" aria-expanded="false" aria-controls="collapseTwo">
+                    Update File Lamaran Pekerjaan
+                </a>
+            </h4>
+        </div>
+
+        <div id="collapseUpdateFileLamaran" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+            <div class="panel-body">
+
+             
+            <div class="col-md-12">
+          
+
+           <h3>
+            <strong>Update File Lamaran Pekerjaan</strong>
+            </h3>
+            <br>
+
+            <form action="prosesupdatefile.php" method="post" enctype="multipart/form-data" id="MyUpdateFileForm">
+
+
+            <div class="col-md-4">
+
+           <div class="form-group">
+            <label class="control-label">Name File</label>
+            <!--command-->
+           <input type="text" autocomplete="off" required="required" class="form-control" name="type_file" placeholder="Name File" />
+          </div>
+
+          </div>
+
+           <div class="col-md-4">
+
+           <div class="form-group">
+            <label class="control-label">Pilih File</label>
+            <div>
+            <label class="btn btn-primary">
+                Choose File <input type="file" id="FileInput" name="FileInput" required="required" class="form-control" style="display: none;">
+            </label>
+          </div>
+
+          </div>
+
+          </div>
+
+
+
+          <div class="col-md-4">
+          <button type="submit" class="btn btn-primary" id="submit-btn" value="Upload">
+          <strong>Upload</strong>
+          </button>   
+          <br><br>
+          </div>
+
+          </form>
+
+          <div class="col-md-12">
+
+          <div id="progressbox" ><div id="progressbar"></div ><div id="statustxt">0%</div></div>
+          
+          <div id="output"></div>
+
+          <img src="images/ajax-loader.gif" id="loading-img" style="display:none;" alt="Please Wait"/>
+          <blockquote>
+            <p>Perhatian !<br>
+              * upload cv,lamaran pekerjan, dll <br>
+              * harap upload data untuk jenis file pdf.<br>
+              * ukuran file yang di upload max 2MB<br>
+              * Jika ingin melakukan update file cek kembali dilist, jika sudah ada lakukan penghapusan terlebih dahulu sebelum melakukan update file</p>
+          </blockquote>
+          </div>
+          <table id="tableuploadfile"
+               data-toggle="table"
+               data-toolbar="#toolbar"
+               data-height="230"
+               data-pagination="true"
+               data-click-to-select="true"
+               data-url="Json/data-uploadfile.php?no_ktp=<?php echo $user_id ?>"
+         data-unique-id="id">
+            <thead>
+
+            <tr>
+
+                <th data-field="" data-checkbox="true"></th>          
+        <th data-field="nama_file" class="danger">Nama File</th>
+        <th data-field="type_file" class="success">Type File</th>
+                <th data-field="paths" class="info">Path</th>
+                  <th data-field="action" class="info">Hapus</th>
+            </thead>
+        </table>
+        <br>
+   
+
+
+
+
+            </div>
+        </div>
+    </div>
+
 
 
         <!-- Modal Penyakit -->
@@ -1149,5 +1254,3 @@ window.location.href='/SAS/pendaftaran/';
                 </div>
             </div>
         </div>
-
-
