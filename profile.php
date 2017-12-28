@@ -918,6 +918,24 @@
 
           })
       }
+      function deletedatauploadfile(id){
+      var iduploadfile =id;
+
+      $.ajax
+        ({
+            url:'deletedatauploadfile.php',
+            dataType:'text',
+            type:'POST',
+            data:{
+              iduploadfile:iduploadfile
+            },
+            success:function(data){
+              alert('' + data + '');
+              $("#tableuploadfile").bootstrapTable('refresh');
+            }
+
+        })
+  }
 
 
       $(document).ready(function(){
