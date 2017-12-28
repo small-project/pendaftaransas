@@ -1,3 +1,6 @@
 /.vscode-upload.json
 /db.php
 /dbconfig.php
+Upload/*
+corporate/assets/*
+corporate/assets/*

@@ -14,7 +14,7 @@
 		} else{
 			echo "<script>
 alert('Update Success!');
-window.location.href='/SAS/pendaftaran/';
+window.location.href='/';
 </script>";
 		}
 	}

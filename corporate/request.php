@@ -154,6 +154,6 @@ elseif(isset($_POST['kst'])){
     <div class="panel-body"><?=$pesan?>
 
 <br/>
-<p style = "text-align: center;"><a href="/pendaftaran/corporate/">pengajuan lainnya</a></p></div>
+<p style = "text-align: center;"><a href="/">pengajuan lainnya</a></p></div>
 </div>
 </div>

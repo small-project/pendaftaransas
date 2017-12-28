@@ -21,7 +21,6 @@ $stmt->execute(array(
             ':id'   => $user_id
         ));
         $col = $tq->fetch(PDO::FETCH_LAZY);
-        echo $col['read_date'];
         if($row['kd_push'] == $col['kd_push'] AND $col['read_date'] == NULL){
             $st = "<span class='text-success'>Unread</span>";
         }else{
