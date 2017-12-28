@@ -64,7 +64,7 @@ $code = $_SESSION['kode'];
         <div class="form-group">
 
         	<div class="form-group">
-			        <input type="text" class="form-control" name="txt_kd" value="<?php echo $code; ?>" />
+			        <input type="hidden" class="form-control" name="txt_kd" value="<?php echo $code; ?>" />
 			        <span id="check-e"></span>
 	        </div>
 
