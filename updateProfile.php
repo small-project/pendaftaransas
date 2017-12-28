@@ -1088,7 +1088,7 @@ window.location.href='/profile.php?p=update';
           
           <div id="output"></div>
 
-          <img src="images/ajax-loader.gif" id="loading-img" style="display:none;" alt="Please Wait"/>
+          <img src="icon/ajax-loader.gif" id="loading-img" style="display:none;" alt="Please Wait"/>
           <blockquote>
             <p>Perhatian !<br>
               * upload cv,lamaran pekerjan, dll <br>
