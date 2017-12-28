@@ -16,7 +16,7 @@ if(isset($_FILES["FileInput"]) && $_FILES["FileInput"]["error"]== UPLOAD_ERR_OK)
 	
 	//check if this is an ajax request
 	if (!isset($_SERVER['HTTP_X_REQUESTED_WITH'])){
-		die("error ajax");
+		die();
 	}
 	
 	

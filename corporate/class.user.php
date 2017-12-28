@@ -1,48 +1,48 @@
 <?php
 
-require_once('../dbconfig.php');
+require_once('config/dbconfig.php');
 
 class USER
-{	
+{
 
 	private $conn;
-	
+
 	public function __construct()
 	{
 		$database = new Database();
 		$db = $database->dbConnection();
 		$this->conn = $db;
     }
-	
+
 	public function runQuery($sql)
 	{
 		$stmt = $this->conn->prepare($sql);
 		return $stmt;
 	}
-	
+
 	public function register($uname,$umail,$upass)
 	{
 		try
 		{
 			$new_password = password_hash($upass, PASSWORD_DEFAULT);
-			
+
 			$stmt = $this->conn->prepare("INSERT INTO tb_login_karyawan(no_ktp,email,password) VALUES(:uname, :umail, :upass)");
-												  
+
 			$stmt->bindparam(":uname", $uname);
 			$stmt->bindparam(":umail", $umail);
-			$stmt->bindparam(":upass", $new_password);										  
-				
-			$stmt->execute();	
-			
-			return $stmt;	
+			$stmt->bindparam(":upass", $new_password);
+
+			$stmt->execute();
+
+			return $stmt;
 		}
 		catch(PDOException $e)
 		{
 			echo $e->getMessage();
-		}				
+		}
 	}
-	
-	
+
+
 	public function doLogin($uname,$umail,$upass)
 	{
 		try
@@ -95,7 +95,7 @@ class USER
 			echo $e->getMessage();
 		}
 	}
-	
+
 	public function is_loggedin()
 	{
 		if(isset($_SESSION['user_session']))
@@ -111,19 +111,19 @@ class USER
 			return true;
 		}
 	}
-	
+
 	public function redirect($url)
 	{
 		header("Location: $url");
 	}
-	
+
 	public function doLogout()
 	{
 		session_destroy();
 		unset($_SESSION['user_session']);
 		return true;
 	}
-	
+
 	public function Generate($id, $kode, $tbName)
 	{
 		$sql = "SELECT MAX(RIGHT(no_pendaftaran, 4)) AS max_id FROM tb_temporary_perusahaan ORDER BY no_pendaftaran";
@@ -138,7 +138,7 @@ class USER
 
   		return $new_code;
 	}
-	function generateRandomString($length = 10) 
+	function generateRandomString($length = 10)
 	{
 
     return substr(str_shuffle(str_repeat($x='!@#$%^&*()0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', ceil($length/strlen($x)) )),1,$length);
@@ -148,7 +148,7 @@ class USER
 class PENDAFTARAN
 {
 	private $conn;
-	
+
 	public function __construct()
 	{
 		$database = new Database();
@@ -195,8 +195,8 @@ class PENDAFTARAN
     	 			'no_ktp'=>$no_ktp
     	 			));
 
-    	 		return $stmt;	
-    	 		
+    	 		return $stmt;
+
     	 	}  catch (PDOException $e){
 		    		echo $e->getMessage();
     	 	}
@@ -233,7 +233,7 @@ class PENDAFTARAN
 		    		$stmt->bindparam(":kota", $kota);
 					$stmt->execute();
 
-					return $stmt;	
+					return $stmt;
 
 
 		    	} catch (PDOException $e)
