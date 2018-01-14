@@ -24,7 +24,7 @@
   <strong>Danger!</strong> anda belum memilih salah satu jenis pekerjaan. <a href="?p=pilihPekerjaan">pilih</a> minimal satu pekerjaan.
 </div>';
   }
-  $base_url="http://".$_SERVER['SERVER_NAME'].dirname($_SERVER["REQUEST_URI"].'?').'/';
+  $base_url="http://".$_SERVER['SERVER_NAME'].dirname($_SERVER["REQUEST_URI"].'?').'';
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
