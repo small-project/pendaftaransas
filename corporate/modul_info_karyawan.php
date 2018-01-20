@@ -9,7 +9,7 @@
 	class Modul
 	{
 		private $conn;
-		function __construct(argument)
+		function __construct($argument)
 		{
 			$database = new Database();
 			$db = $database->dbConnection();

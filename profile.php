@@ -24,7 +24,7 @@
   <strong>Danger!</strong> anda belum memilih salah satu jenis pekerjaan. <a href="?p=pilihPekerjaan">pilih</a> minimal satu pekerjaan.
 </div>';
   }
-
+  $base_url="http://".$_SERVER['SERVER_NAME'].dirname($_SERVER["REQUEST_URI"].'?').'';
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -78,12 +78,12 @@
          <span class="icon-bar"></span>
          <span class="icon-bar"></span>
          </button>
-         <a class="navbar-brand" href="#">SINERGIADHIKARYA</a>
+         <a class="navbar-brand" href="<?=$base_url?>">SINERGIADHIKARYA</a>
       </div>
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
          <ul class="nav navbar-nav">
-            <li ><a href="/pendaftaran">home</a></li>
+            <li ><a href="<?=$base_url?>">home</a></li>
             <li><a href="?p=profile">profile</a></li>
             <li class="dropdown">
                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">corporate  <span class="caret"></span></a>

@@ -1,12 +1,6 @@
 <?php
 $data = $_GET['kode'];
 $date = date('Y-m-d H:m:s');
-$sql = "UPDATE tb_detail_push SET read_date = :tanggal WHERE kd_push = :kode ";
-$stmt = $auth_user->runQuery($sql);
-$stmt->execute(array(
-    ':tanggal'  => $date,
-    ':kode' => $data
-));
     $query = "SELECT tb_push.kd_push, tb_push.subject, tb_push.dari, tb_push.kepada, tb_detail_push.kd_detail, tb_detail_push.inisial, tb_detail_push.pesan, tb_detail_push.create_date, tb_detail_push.read_date, tb_subject_push.nama_subject FROM tb_push 
     INNER JOIN tb_detail_push ON tb_detail_push.kd_push = tb_push.kd_push 
     INNER JOIN tb_subject_push ON tb_subject_push.kd_subject = tb_push.subject
@@ -15,6 +9,17 @@ $stmt->execute(array(
     $dt->execute(array(
         ':id' => $user_id,
         ':data' => $data
+    ));
+
+    // $kodeID = $dt->fetch(PDO::FETCH_LAZY);!
+
+    
+    $sql = "UPDATE tb_detail_push SET read_date = :tanggal WHERE kd_push = :kode AND inisial != :inisial ";
+    $stmt = $auth_user->runQuery($sql);
+    $stmt->execute(array(
+        ':tanggal'  => $date,
+        ':kode' => $data,
+        ':inisial' => $user_id
     ));
 ?>
 <div class="row">

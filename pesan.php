@@ -14,8 +14,12 @@ $stmt->execute(array(
 </a>
 <?php 
     while ($row = $stmt->fetch(PDO::FETCH_LAZY)){
-        $query = "SELECT tb_push.kd_push, tb_push.subject, tb_push.dari, tb_push.kepada, tb_detail_push.kd_detail, tb_detail_push.inisial, tb_detail_push.pesan, tb_detail_push.create_date, tb_detail_push.read_date FROM tb_push 
-        INNER JOIN tb_detail_push ON tb_detail_push.kd_push = tb_push.kd_push WHERE tb_push.kepada  = :id ORDER BY tb_detail_push.read_date ASC";
+        $query = "SELECT tb_push.kd_push, tb_push.subject, tb_push.dari, tb_push.kepada,
+tb_detail_push.kd_detail, tb_detail_push.inisial, tb_detail_push.pesan, tb_detail_push.create_date,
+tb_detail_push.read_date FROM tb_push 
+    
+INNER JOIN tb_detail_push ON tb_detail_push.kd_push = tb_push.kd_push 
+WHERE tb_push.kepada  = :id AND tb_detail_push.inisial != :id  ORDER BY tb_detail_push.read_date ASC";
         $tq = $auth_user->runQuery($query);
         $tq->execute(array(
             ':id'   => $user_id
